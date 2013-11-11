@@ -102,7 +102,8 @@ class Tabla:
 	# {Post: }
 '''
 
-
+t1 = Tabla()    
+t1.Lectura()
 
 
 
