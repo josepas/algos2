@@ -67,12 +67,21 @@ class Tabla:
     # {Post: self.tam = 0}
 
 
-    def Puntos_KEstacionarios(self, f, g): # Hasta ahora esto esta cableado feo
+    def Puntos_KEstacionarios(self, *t): # Hasta ahora esto esta cableado feo
     # {Pre: True}	
         nuevaTabla = Tabla()
         for i in self.dicc:
-            if (self.dicc[i] in f.dicc) and (f.dicc[self.dicc[i]] in g.dicc): 	
+            v = self.dicc[i]
+            final = True
+            for j in t:
+                if(v in j.dicc):
+                    v = j.dicc[v]
+                else:
+                    final = False
+                    break
+            if(i == v and final):
                 nuevaTabla.dicc[i] = i
+
         nuevaTabla.Escritura()
     # {Post: }
 
