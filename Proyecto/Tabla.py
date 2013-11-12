@@ -77,19 +77,17 @@ class Tabla:
     # {Post: }
 
 
-    def Puntos_Potencia(self): # Esta parece estar funcionando bien
+    def Puntos_Potencia(self, n): # Esta parece estar funcionando bien
     # {Pre: True}	
         nuevaTabla = Tabla()
         for i in self.dicc:
             cota = 0		
             act = i
-            while cota <= self.dim and self.Busqueda(act):
-                act = self.dicc[act]		
-                if act == i:
-                    nuevaTabla.dicc[i] = i
-                    break
+            while cota < n and self.Busqueda(act):
+                act = self.dicc.get(act)	
                 cota += 1
-
+            if act == i:
+                nuevaTabla.dicc[i] = i
         nuevaTabla.Escritura()
     # {Post: }
 
@@ -98,9 +96,9 @@ class Tabla:
 t = Tabla()
 t.Lectura()
 t.Escritura()
-t.Puntos_Potencia()
-t.Puntos_Fijos()
-t.Puntos_Moviles()
+t.Puntos_Potencia(4)
+#t.Puntos_Fijos()
+#t.Puntos_Moviles()
 
 '''
 	def Puntos_K_reflexivo(self, v, f, g): #esta esta mal hecha
