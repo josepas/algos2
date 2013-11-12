@@ -68,7 +68,7 @@ class Tabla:
 
 
     def Puntos_KEstacionarios(self, *t): # Hasta ahora esto esta cableado feo
-    # {Pre: True}	
+    # {Pre: True}  
         nuevaTabla = Tabla()
         for i in self.dicc:
             v = self.dicc[i]
@@ -80,10 +80,10 @@ class Tabla:
                     final = False
                     break
             if(i == v and final):
-                nuevaTabla.dicc[i] = i
+                 nuevaTabla.dicc[i] = i
 
         nuevaTabla.Escritura()
-    # {Post: }
+     # {Post: }
 
 
     def Puntos_Potencia(self, n): # Esta parece estar funcionando bien
@@ -92,11 +92,12 @@ class Tabla:
         for i in self.dicc:
             cota = 0		
             act = i
-            while cota < n and self.Busqueda(act):
+            while cota < n and self.dicc.get(act) != None:
                 act = self.dicc.get(act)	
                 cota += 1
             if act == i:
                 nuevaTabla.dicc[i] = i
+        
         nuevaTabla.Escritura()
     # {Post: }
 
