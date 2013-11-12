@@ -93,13 +93,6 @@ class Tabla:
         nuevaTabla.Escritura()
     # {Post: }
 
-T = []
-
-for i in range(0,10):
-    T.append(Tabla())
-    
-for i in 
-    
     
     
 t = Tabla()
