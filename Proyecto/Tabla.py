@@ -28,7 +28,8 @@ class Tabla:
             self.dicc[int(a[0])] = int(a[1])
             self.dim += 1
         print(self.dicc) # Aqui chequeo que el diccionario se haya cargado bien
-    # {Post: self.dim > 0 /\ #self.dicc = dim}
+        assert self.dim > 0, "self.dim != 1"
+    # {Post: self.dim > 0}
 
 
     def Escritura(self):
