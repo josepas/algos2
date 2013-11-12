@@ -111,26 +111,4 @@ t.Puntos_Potencia(4)
 #t.Puntos_Fijos()
 #t.Puntos_Moviles()
 
-'''
-	def Puntos_K_reflexivo(self, v, f, g): #esta esta mal hecha
-	# {Pre: True}
-		total = 0
-		for i in self.dicc:
-			total += 1			
-			if (v == i):			
-				for j in f.dicc:
-					total += 1
-					if self.dicc[i] == j:
-						for k in g.dicc:
-							total += 1
-							if f.dicc[j] = k and i = g.dicc[k]:
-								return total
-		
-	# {Post: }
-'''
-
-
-
-
-
 
