@@ -67,26 +67,6 @@ class Tabla:
 
     # {Post: self.tam = 0}
 
-
-    def Puntos_KEstacionarios(self, *t): # Hasta ahora esto esta cableado feo
-    # {Pre: True}  
-        nuevaTabla = Tabla()
-        for i in self.dicc:
-            v = self.dicc[i]
-            final = True
-            for j in t:
-                if(v in j.dicc):
-                    v = j.dicc[v]
-                else:
-                    final = False
-                    break
-            if(i == v and final):
-                 nuevaTabla.dicc[i] = i
-
-        nuevaTabla.Escritura()
-     # {Post: }
-
-
     def Puntos_Potencia(self, n): # Esta parece estar funcionando bien
     # {Pre: True}	
         nuevaTabla = Tabla()
@@ -111,4 +91,37 @@ t.Puntos_Potencia(4)
 #t.Puntos_Fijos()
 #t.Puntos_Moviles()
 
+def Tope_k_Reflexivo(v, *t):
+    act = v
+    n = 0
+    while (n < cota) and (act != None):
+        for i in t:
+            act = i.dicc.get(act)
+        n += 1
+        if (v = act):
+            return print('El valor', v, 'es reflexivo con valor', n)
+    return print('El valor', v, 'no es reflexivo') 
 
+def Puntos_k_Estacionarios(*t):
+    # {Pre: True}  
+    nuevaTabla = Tabla()
+    final = True
+            for j in t:
+                if(v in j.dicc):
+                    v = j.dicc[v]
+                else:
+                    final = False
+                    break
+            if(i == v and final):
+                    nuevaTabla.dicc[i] = i
+
+        nuevaTabla.Escritura()
+        # {Post: }            
+    
+    
+    
+    
+    
+    
+    
+    
