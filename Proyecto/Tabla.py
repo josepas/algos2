@@ -19,15 +19,16 @@ class Tabla:
     # {Post: self.dim = 0}
 
 
-    def Lectura(self):
+    def Lectura(self, archivo):
     # {Pre: True}		
 
-        entrada = open('entrada', 'r')
+        entrada = open(archivo, 'r')
         for i in entrada:
             a = i.strip().split()
-            self.dicc[int(a[0])] = int(a[1])
+            self.dicc[str(a[0])] = str(a[1])
             self.dim += 1
         print(self.dicc) # Aqui chequeo que el diccionario se haya cargado bien
+        entrada.close()
         assert self.dim > 0, "self.dim != 1"
     # {Post: self.dim > 0}
 
@@ -82,38 +83,34 @@ class Tabla:
         nuevaTabla.Escritura()
     # {Post: }
 
-    
-    
-t = Tabla()
-t.Lectura()
-t.Escritura()
-t.Puntos_Potencia(4)
-#t.Puntos_Fijos()
-#t.Puntos_Moviles()
-
 def Tope_k_Reflexivo(v, *t):
     act = v
     n = 0
+    cota = 0
+    for i in t:
+        cota += len(i.dicc)
     while (n < cota) and (act != None):
         for i in t:
             act = i.dicc.get(act)
         n += 1
-        if (v = act):
+        if (v == act):
             return print('El valor', v, 'es reflexivo con valor', n)
     return print('El valor', v, 'no es reflexivo') 
 
 def Puntos_k_Estacionarios(*t):
     # {Pre: True}  
     nuevaTabla = Tabla()
-    final = True
-            for j in t:
-                if(v in j.dicc):
-                    v = j.dicc[v]
-                else:
-                    final = False
-                    break
-            if(i == v and final):
-                    nuevaTabla.dicc[i] = i
+    for i in t[0].dicc:
+        v = t[0].dicc[i]
+        final = True
+        for j in t[1:]:
+            if(v in j.dicc):
+                v = j.dicc[v]
+            else:
+                final = False
+                break
+        if(i == v and final):
+                nuevaTabla.dicc[i] = i
 
         nuevaTabla.Escritura()
         # {Post: }            
