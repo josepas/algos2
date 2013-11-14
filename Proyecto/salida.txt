@@ -1,0 +1,28 @@
+Puntos Fijos:
+
+Puntos Moviles:
+1234	5678
+elefante	Luis
+Money	fandango
+Hellboy	1234
+5678	Money
+Luis	Shrek
+fandango	elefante
+Shrek	Hellboy
+
+Puntos Potencia:
+1234	1234
+elefante	elefante
+Money	Money
+Hellboy	Hellboy
+5678	5678
+Luis	Luis
+fandango	fandango
+Shrek	Shrek
+
+Puntos K Estacionarios:
+1234	1234
+
+Puntos K Estacionarios:
+1234	1234
+

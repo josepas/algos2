@@ -27,17 +27,18 @@ class Tabla:
             a = i.strip().split()
             self.dicc[str(a[0])] = str(a[1])
             self.dim += 1
-        print(self.dicc) # Aqui chequeo que el diccionario se haya cargado bien
         entrada.close()
-        assert self.dim > 0, "self.dim != 1"
+        assert self.dim > 0, "self.dim <= 0"
     # {Post: self.dim > 0}
 
 
-    def Escritura(self):
+    def Escritura(self, funcion):
     # {Pre: True}
-        for i in self.dicc:
-            print(i, '|', self.dicc[i])
-        print()
+        with open("salida.txt", "a") as archivo:
+            archivo.write(funcion + '\n')
+            for i in self.dicc:
+                archivo.write(i + '\t' + self.dicc[i] + '\n')
+            archivo.write('\n')
     # {Post: True}
 
 
@@ -46,16 +47,15 @@ class Tabla:
         return (clave in self.dicc)
     # {Post: Busqueda == %exists | 0 <= i < self.dim : self.dicc[clave] }
 
-
     def Puntos_Fijos(self):
     # {Pre: True}	
         nuevaTabla = Tabla()
         for i in self.dicc:
             if (i == self.dicc[i]):
                 nuevaTabla.dicc[i] = self.dicc[i]
-        nuevaTabla.Escritura()
+        nuevaTabla.Escritura("Puntos Fijos:")
 
-    # {Post: }
+    # {Post: (%forall i | self.dicc[i] == i : nuevaTabla.dicc[i] = i) }
 
 
     def Puntos_Moviles(self):
@@ -64,12 +64,13 @@ class Tabla:
         for i in self.dicc:
             if (i != self.dicc[i]):
                 nuevaTabla.dicc[i] = self.dicc[i]
-        nuevaTabla.Escritura()
+        nuevaTabla.Escritura("Puntos Moviles:")
 
-    # {Post: self.tam = 0}
+    # {Post: (%forall i | self.dicc[i] != i : nuevaTabla.dicc[i] = self.dicc[i] )}
 
-    def Puntos_Potencia(self, n): # Esta parece estar funcionando bien
-    # {Pre: True}	
+    def Puntos_Potencia(self, n):
+        # {Pre: n > 0 }
+        assert n > 0, "n > 0"
         nuevaTabla = Tabla()
         for i in self.dicc:
             cota = 0		
@@ -80,45 +81,43 @@ class Tabla:
             if act == i:
                 nuevaTabla.dicc[i] = i
         
-        nuevaTabla.Escritura()
+        nuevaTabla.Escritura("Puntos Potencia:")
     # {Post: }
 
-def Tope_k_Reflexivo(v, *t):
-    act = v
-    n = 0
-    cota = 0
-    for i in t:
-        cota += len(i.dicc)
-    while (n < cota) and (act != None):
+class Multi_Tablas():
+    def Tope_k_Reflexivo(v, *t):
+        # {Pre: len(t) > 0 }
+        assert len(t) > 0, "len(t) > 0"
+        act = v
+        n = 0
+        cota = 0
         for i in t:
-            act = i.dicc.get(act)
-        n += 1
-        if (v == act):
-            return print('El valor', v, 'es reflexivo con valor', n)
-    return print('El valor', v, 'no es reflexivo') 
+            if(cota < len(i.dicc)):
+                cota = len(i.dicc)
+        while (n < cota) and (act != None):
+            for i in t:
+                act = i.dicc.get(act)
+            n += 1
+            if (v == act):
+                return print('El valor', v, 'es reflexivo con valor', n)
+        return print('El valor', v, 'no es reflexivo') 
+        # {Post: }
 
-def Puntos_k_Estacionarios(*t):
-    # {Pre: True}  
-    nuevaTabla = Tabla()
-    for i in t[0].dicc:
-        v = t[0].dicc[i]
-        final = True
-        for j in t[1:]:
-            if(v in j.dicc):
-                v = j.dicc[v]
-            else:
-                final = False
-                break
-        if(i == v and final):
-                nuevaTabla.dicc[i] = i
-
-        nuevaTabla.Escritura()
+    def Puntos_k_Estacionarios(*t):
+        # {Pre: len(t) > 0 }
+        assert len(t) > 0, "len(t) > 0"  
+        nuevaTabla = Tabla()
+        for i in t[0].dicc:
+            v = t[0].dicc[i]
+            final = True
+            for j in t[1:]:
+                if(v in j.dicc):
+                    v = j.dicc[v]
+                else:
+                    final = False
+                    break
+            if(i == v and final):
+                    nuevaTabla.dicc[i] = i
+        nuevaTabla.Escritura("Puntos K Estacionarios:")
         # {Post: }            
-    
-    
-    
-    
-    
-    
-    
     
