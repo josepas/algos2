@@ -1,5 +1,5 @@
 class pila:
-    def __init__(self,m):
+    def __init__(self):
         self.cont = []
         
     def Tope(self):
