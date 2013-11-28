@@ -27,3 +27,11 @@ class Tubo(pila):
       if (self.ocupacion < self.capacidad):
          self.Empilar(v)
          self.ocupacion += v.longitud
+
+    def Retirar(self, v):
+    
+    
+    def Cercano(self):
+	self.Tope
+    
+    def Existe(self):
