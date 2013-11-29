@@ -1,19 +1,36 @@
+class Nodo:
+    def __init__(self, info):
+        self.info = info
+        self.sig = None
+
+
 class Pila:
     def __init__(self):
-        self.cont = []
+        self.cabeza = None
         self.tam = 0
         
+        
     def Tope(self):
-        return self.cont[-1]
-    
+        return self.cabeza
+        
     def Empilar(self, nodo):
-        self.cont.append(nodo)
+        nuevo = Nodo(nodo)
+        if (self.tam = 0):
+            self.cabeza = nuevo 
+        else:
+            nuevo.sig = self.cabeza
+            self.cabeza = nuevo
+    
         self.tam += 1
         
     def Desempilar(self):
-        if (self.tam > 0):
-            self.cont.remove(self.cont[-1])
-            self.tam -= 1
+        assert(self.tam > 0)    
+        if (self.tam = 1):
+            self.cabeza = None
+        else:
+            self.cabeza = self.cabeza.sig
+
+        self.tam -= 1
             
     def Vacia(self):
-        return self.tam == 0
+        return (self.tam == 0)
