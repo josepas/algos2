@@ -2,7 +2,7 @@ from cola import Cola
 from Tubo import Tubo
 from random import *
 
-class Estacionamiento(cola):
+class Estacionamiento(Cola):
     i = 0
     def __init__(self):
         seed()
@@ -10,22 +10,44 @@ class Estacionamiento(cola):
         Estacionamiento.i += 1 
         super().__init__() #inicializa la cola
 
-    def Generar(self):
-        aux = Tubo()
+    def Generar(self, iden=-1, capacidad=-1):
+        aux = Tubo(iden, capacidad)
         self.Encolar(aux)
         return aux
-
+    
+    def Destruir(self):
+            self.Desencolar()
+    
     def Estacionar(self, v):
-        espacio = False
-        for i in range(0,len(self.cont)):
+        for i in range(0, self.tam):
             if(self.Tope().Cabe(v)):
                 self.Tope().Estacionar(v)
-                espacio = True
-                break
+                return self.Tope().iden
             else:
                 self.Encolar(self.Tope())
                 self.Desencolar()
-        if not espacio:
-            tmp = self.Generar()
-            tmp.Estacionar(v)
+        tmp = self.Generar()
+        tmp.Estacionar(v)
+        return tmp.iden
 
+    def Existe(self, placa, ticket):
+        i = self.Tope()
+        while(i.iden != ticket):
+            self.Encolar(i)
+            self.Desencolar()
+            i = self.Tope()
+        return i.Existe("Placa", placa)
+
+    def Retirar(self, placa, ticket):
+        if(self.Existe(placa, ticket)):
+            tubo = self.Tope()
+            tmp = self.Generar(tubo.iden, tubo.capacidad)
+            while(tubo.ocupacion > 0):
+                vtmp = tubo.Cercano()
+                tubo.Retirar()
+                if(vtmp.placa == placa):
+                    v = vtmp
+                else:
+                    tmp.Estacionar(vtmp)
+            self.Destruir()
+            return v

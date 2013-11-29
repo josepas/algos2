@@ -24,7 +24,10 @@ class Cola:
     
     def Desencolar(self):
         assert(self.tam > 0)
+<<<<<<< HEAD
         salida = self.cabeza.info
+=======
+>>>>>>> 25edb5e807f551dc5586a8444219783758d7b70c
         if (self.tam == 1):
             self.ultimo = None
         else:

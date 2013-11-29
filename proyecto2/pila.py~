@@ -23,8 +23,16 @@ class Pila:
         
     def Desempilar(self):
         assert(self.tam > 0)    
+<<<<<<< HEAD
         salida = self.cabeza.info
         self.cabeza = self.cabeza.sig
+=======
+        if (self.tam == 1):
+            self.cabeza = None
+        else:
+            self.cabeza = self.cabeza.sig
+
+>>>>>>> 25edb5e807f551dc5586a8444219783758d7b70c
         self.tam -= 1
         return salida
             
