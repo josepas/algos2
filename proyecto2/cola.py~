@@ -3,8 +3,6 @@ class Nodo:
         self.info = info
         self.sig = None
         
-
-
 class Cola:
     def __init__(self):
         self.cabeza = None
@@ -12,11 +10,11 @@ class Cola:
         self.tam = 0
         
     def Tope(self):
-        return self.cabeza
+        return self.cabeza.info
     
     def Encolar(self, nodo):
         nuevo = Nodo(nodo)
-        if (self.tam = 0):
+        if (self.tam == 0):
             self.cabeza = nuevo
             self.ultimo = nuevo
         else:
@@ -26,14 +24,21 @@ class Cola:
     
     def Desencolar(self):
         assert(self.tam > 0)
-        if (self.tam = 1):
+        salida = self.cabeza.info
+        if (self.tam == 1):
             self.ultimo = None
-            self.cabeza = None
         else:
             self.cabeza = self.cabeza.sig
         self.tam -= 1
+        return salida
             
     def Vacia(self):
         return (self.tam == 0)
+        
+    def Imprimir(self):
+        aux = self.cabeza
+        while (aux != None):
+            print(aux.info)
+            aux = aux.sig
     
   

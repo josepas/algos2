@@ -9,28 +9,30 @@ class Pila:
         self.cabeza = None
         self.tam = 0
         
-        
     def Tope(self):
-        return self.cabeza
+        return self.cabeza.info
         
     def Empilar(self, nodo):
         nuevo = Nodo(nodo)
-        if (self.tam = 0):
+        if (self.tam == 0):
             self.cabeza = nuevo 
         else:
             nuevo.sig = self.cabeza
             self.cabeza = nuevo
-    
         self.tam += 1
         
     def Desempilar(self):
         assert(self.tam > 0)    
-        if (self.tam = 1):
-            self.cabeza = None
-        else:
-            self.cabeza = self.cabeza.sig
-
+        salida = self.cabeza.info
+        self.cabeza = self.cabeza.sig
         self.tam -= 1
+        return salida
             
     def Vacia(self):
         return (self.tam == 0)
+
+    def Imprimir(self):
+        aux = self.cabeza
+        while (aux != None):
+            print(aux.info)
+            aux = aux.sig
