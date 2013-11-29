@@ -2,7 +2,7 @@ from cola import Cola
 from Tubo import Tubo
 from random import *
 
-class Estacionamiento(cola):
+class Estacionamiento(Cola):
     i = 0
     def __init__(self):
         seed()
