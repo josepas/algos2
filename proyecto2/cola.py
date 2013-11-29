@@ -10,11 +10,11 @@ class Cola:
         self.tam = 0
         
     def Tope(self):
-        return self.cabeza
+        return self.cabeza.info
     
     def Encolar(self, nodo):
         nuevo = Nodo(nodo)
-        if (self.tam = 0):
+        if (self.tam == 0):
             self.cabeza = nuevo
             self.ultimo = nuevo
         else:
@@ -24,7 +24,7 @@ class Cola:
     
     def Desencolar(self):
         assert(self.tam > 0)
-        if (self.tam = 1):
+        if (self.tam == 1):
             self.ultimo = None
             self.cabeza = None
         else:

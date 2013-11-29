@@ -15,7 +15,7 @@ class Pila:
         
     def Empilar(self, nodo):
         nuevo = Nodo(nodo)
-        if (self.tam = 0):
+        if (self.tam == 0):
             self.cabeza = nuevo 
         else:
             nuevo.sig = self.cabeza
@@ -25,7 +25,7 @@ class Pila:
         
     def Desempilar(self):
         assert(self.tam > 0)    
-        if (self.tam = 1):
+        if (self.tam == 1):
             self.cabeza = None
         else:
             self.cabeza = self.cabeza.sig
