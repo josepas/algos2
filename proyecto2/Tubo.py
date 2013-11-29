@@ -1,9 +1,9 @@
-from pila import pila
+from pila import Pila
 import random
 
 random.seed()
 
-class Tubo(pila):
+class Tubo(Pila):
     i = 0 
     def __init__(self, iden=-1, c=-1):
         if(iden == -1):
@@ -29,11 +29,12 @@ class Tubo(pila):
             self.Empilar(v)
             self.ocupacion += v.longitud
 
-    def Retirar(self, v):
-        return None
-
+    def Retirar(self):
+        self.Desempilar()
+        
+    
     def Cercano(self):
-        self.Tope
+        return self.Tope().placa
 
     def Existe(self):
         return None

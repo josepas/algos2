@@ -1,4 +1,4 @@
-from cola import cola
+from cola import Cola
 from Tubo import Tubo
 from random import *
 
