@@ -27,12 +27,15 @@ class Evento:
             s.write('--> Se crea Estacionamiento', nombre)
         
         elif (codigo == 'P'):
+            # Lectura
+            codigo, p, l, m, a, c = self.string.split()
+            
             #
             #   Algoritmo para estacionar carros
             #   
             
             # Creacion del vehiculo desde el archivo
-            codigo, p, l, m, a, c = self.string.split()
+            
             nuevo = Vehiculo(p, l, m, a, c)
             s.write('--> Entra Vehiculo', p, 'de longitud', l)
             
@@ -61,11 +64,23 @@ class Evento:
                 s.write('--> Se Estaciona Vehiculo' nuevo.p, 'en Tubo' e.ultimo.info.iden, '(ocupacion', e.ultimo.info.ocupacion, ')')
                 
         
-        elif (codigo == 'R'):     
-            
+        elif (codigo == 'R'):
+            # Lectura
+            codigo, p, t = self.string.split()
+        
+        
+        
+        
+        
+        
         elif (codigo == 'E'):
+            # Lectura
+            codigo, p, t = self.string.split()
+        
         
         elif (codigo == 'B'):
+            # Lectura
+            codigo, selec, valor = self.string.split()
         
         elif (codigo == 'K'):
             
