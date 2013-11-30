@@ -3,7 +3,6 @@ class Nodo:
         self.info = info
         self.sig = None
 
-
 class Pila:
     def __init__(self):
         self.cabeza = None

@@ -1,5 +1,6 @@
 from cola import Cola
 from Tubo import Tubo
+from Evento import Evento
 from random import *
 
 class Estacionamiento(Cola):
@@ -51,3 +52,19 @@ class Estacionamiento(Cola):
                     tmp.Estacionar(vtmp)
             self.Destruir()
             return v
+            
+            
+
+        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
