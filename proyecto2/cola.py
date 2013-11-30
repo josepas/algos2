@@ -26,6 +26,7 @@ class Cola:
         assert(self.tam > 0)
         salida = self.cabeza.info
         if (self.tam == 1):
+            self.cabeza = None
             self.ultimo = None
         else:
             self.cabeza = self.cabeza.sig
