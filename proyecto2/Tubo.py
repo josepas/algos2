@@ -30,11 +30,26 @@ class Tubo(Pila):
             self.ocupacion += v.longitud
 
     def Retirar(self):
+        vtmp = self.Tope()
         self.Desempilar()
+        self.ocupacion -= vtmp.longitud
         
-    
     def Cercano(self):
-        return self.Tope().placa
+        return self.Tope()
 
-    def Existe(self):
-        return None
+    def Existe(self, atributo, valor):
+        if(atributo == "Placa"):
+            aux = Pila()
+            esta = False
+            while not (self.Vacia() or esta):
+                tmp = self.Tope()
+                if(tmp.placa == valor):
+                    esta = True
+                else:
+                    aux.Empilar(tmp)
+                    self.Desempilar()
+            while not aux.Vacia():
+                tmp = aux.Tope()
+                self.Empilar(tmp)
+                aux.Desempilar()
+            return esta
