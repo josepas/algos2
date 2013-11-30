@@ -1,6 +1,6 @@
 class Vehiculo:
     i = 0
-    def __init__(self, l, p, m, a, c): 
+    def __init__(self, p, l, m, a, c): 
         self.iden = Vehiculo.i
         self.longitud = l 
         self.placa = p
