@@ -12,8 +12,6 @@ for i in f:
     print(i.strip())
     h = Evento(i.strip())
 
-
-
 class Evento:
     def __init__(self, string):
         self.string = string
@@ -35,7 +33,6 @@ class Evento:
             #   
             
             # Creacion del vehiculo desde el archivo
-            
             nuevo = Vehiculo(p, l, m, a, c)
             s.write('--> Entra Vehiculo', p, 'de longitud', l)
             
@@ -67,8 +64,37 @@ class Evento:
         elif (codigo == 'R'):
             # Lectura
             codigo, p, t = self.string.split()
-        
-        
+            
+            #
+            # Algoritmo para retirar carros
+            #
+            
+            # Se verifica si el vehiculo existe en el Estacionamiento
+            if e.Existe(p, t)
+                s.write('--> Vehiculo', p, 'EXISTE en Tubo', t)
+                s.write('--> Se corren los tubos hasta que el Tubo', t, 'sea el Primero')
+                s.write('--> Se crea un Tubo auxiliar con capacidad de Tubo', t, '(', e.Tope().capacidad ') y ocupacion 0')
+
+                # Se retira el vehiculo 
+                e.Retirar(p, t)
+                s.write('--> Se mueven Vehiculos del Tubo', t, 'al Tubo auxiliar')
+                s.write('--> Sale Vehiculo', p)
+                s.write('--> Se elimina Tubo', e.ultimo.info.iden)
+                s.write('--> Tubo auxiliar es ahora Tubo', e.ultimo.info.iden, 'con ocupacion' e.ultimo.info.ocupacion)
+                s.write('--> Se coloca Tubo', e.ultimo.info.iden, 'de ultimo en la cola de tubos de', nombre)
+                s.write('--> Se corren los tubos hasta que el Tubo', e.ultimo.info.iden, 'sea el Primero')
+                
+            else:
+                s.write('--> NO EXISTE Vehiculo', p, 'en Tubo', t)
+                
+                
+                
+                
+            
+            
+            
+            
+            
         
         
         

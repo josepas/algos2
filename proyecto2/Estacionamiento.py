@@ -42,14 +42,15 @@ class Estacionamiento(Cola):
     def Retirar(self, placa, ticket):
         if(self.Existe(placa, ticket)):
             tubo = self.Tope()
-            tmp = self.Generar(tubo.iden, tubo.capacidad)
+            self.Generar(tubo.iden, tubo.capacidad)
             while(tubo.ocupacion > 0):
                 vtmp = tubo.Cercano()
                 tubo.Retirar()
                 if(vtmp.placa == placa):
                     v = vtmp
                 else:
-                    tmp.Estacionar(vtmp)
+                    # tmp.Estacionar(vtmp) ---- esto no se si funcionaria :0
+                    self.ultimo.Estacionar(vtmp)
             self.Destruir()
             return v
             
