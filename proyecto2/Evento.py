@@ -9,19 +9,15 @@
 # Ultima Modificacion: 5 / 12 / 2013
 
 from Estacionamiento import Estacionamiento
-from cola import Cola
-from Tubo import Tubo
 from Vehiculo import Vehiculo
-from random import *
-
-s = open('Traza.txt', 'w')
-
+    
 class Evento:
     def __init__(self, string):
         self.string = string
         self.Procesar()
 
     def Procesar(self):
+        s = open('Traza.txt', 'w')
         codigo = self.string[0]
         
         if (codigo == 'C'):

@@ -8,8 +8,6 @@
 #
 # Ultima Modificacion: 5 / 12 / 2013
 
-
-
 class Nodo:
     def __init__(self, info):
         self.info = info

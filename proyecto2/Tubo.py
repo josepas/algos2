@@ -9,8 +9,8 @@
 # Ultima Modificacion: 5 / 12 / 2013
 
 
-from cola import Cola
-from pila import Pila
+from cola import *
+from pila import *
 import random
 
 random.seed()

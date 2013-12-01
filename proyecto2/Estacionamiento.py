@@ -8,9 +8,9 @@
 #
 # Ultima Modificacion: 5 / 12 / 2013
 
-from cola import Cola
+from cola import *
 from Tubo import Tubo
-#from Evento import Evento
+from Evento import Evento
 from random import *
 
 class Estacionamiento(Cola):
@@ -87,7 +87,7 @@ class Estacionamiento(Cola):
     def ProcesarLlegadas(self, archivo):
         f = open(archivo, 'r')
         for i in f:
-            print(i.strip())
+            print(i.strip()) # flag
             h = Evento(i.strip())
             
             
