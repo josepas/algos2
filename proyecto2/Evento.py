@@ -66,7 +66,7 @@ class Evento:
             codigo, p, t = self.string.split()
             
             #
-            # Algoritmo para retirar carros
+            # Retirar Vehiculos
             #
             
             # Se verifica si el vehiculo existe en el Estacionamiento
@@ -88,28 +88,26 @@ class Evento:
                 s.write('--> NO EXISTE Vehiculo', p, 'en Tubo', t)
                 
                 
-                
-                
-            
-            
-            
-            
-            
-        
-        
-        
-        
         elif (codigo == 'E'):
             # Lectura
             codigo, p, t = self.string.split()
+
+            if e.Existe(p, t)
+                s.write('--> Vehiculo', p, 'EXISTE en Tubo', t)
+            else:
+                s.write('--> NO EXISTE Vehiculo', p, 'en Tubo', t)
         
         
         elif (codigo == 'B'):
             # Lectura
             codigo, selec, valor = self.string.split()
         
+        
+        
         elif (codigo == 'K'):
-            
+            s.write('--> Se destruyen estacionamiento, tubos y vehiculos remanentes')
+            s.write('--> Adios')
+            s.close()
 
             
         
