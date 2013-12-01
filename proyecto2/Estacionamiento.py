@@ -1,3 +1,13 @@
+# Proyecto 2
+#
+# Clase Estacionamiento 
+#
+# Autores:
+#   Jose Pascarella     11-10743
+#   Amin Arria          11-10053
+#
+# Ultima Modificacion: 5 / 12 / 2013
+
 from cola import Cola
 from Tubo import Tubo
 #from Evento import Evento

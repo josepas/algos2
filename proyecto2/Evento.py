@@ -1,3 +1,15 @@
+# Proyecto 2
+#
+# Clase Evento 
+#
+# Autores:
+#   Jose Pascarella     11-10743
+#   Amin Arria          11-10053
+#
+# Ultima Modificacion: 5 / 12 / 2013
+
+
+
 from Estacionamiento import Estacionamiento
 from cola import Cola
 from Tubo import Tubo
@@ -101,6 +113,12 @@ class Evento:
         elif (codigo == 'B'):
             # Lectura
             codigo, selec, valor = self.string.split()
+            
+        
+        
+        
+        
+        
         
         
         
