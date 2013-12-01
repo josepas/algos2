@@ -9,7 +9,7 @@
 # Ultima Modificacion: 5 / 12 / 2013
 
 
-from colo import Cola
+from cola import Cola
 from pila import Pila
 import random
 
@@ -66,34 +66,34 @@ class Tubo(Pila):
                 aux.Desempilar()
             return esta
             
-    def GetColor(self, salida, valor)
+    def GetColor(self, salida, valor):
         i = self.cabeza
-        while (i != None)
-            if i.info.color = valor
+        while (i != None):
+            if (i.info.color == valor):
                 salida.Encolar(i.info)
             i = i.sig
         return salida
             
-    def GetAnyo(self, salida, valor)
+    def GetAnyo(self, salida, valor):
         i = self.cabeza
-        while (i != None)
-            if i.info.anyo = valor
+        while (i != None):
+            if (i.info.anyo == valor):
                 salida.Encolar(i.info)
             i = i.sig
         return salida
     
-    def GetModelo(self, salida, valor)
+    def GetModelo(self, salida, valor):
         i = self.cabeza
-        while (i != None)
-            if i.info.modelo = valor
+        while (i != None):
+            if (i.info.modelo == valor):
                 salida.Encolar(i.info)
             i = i.sig
         return salida
     
-    def GetLongitud(self, salida, valor)
+    def GetLongitud(self, salida, valor):
         i = self.cabeza
-        while (i != None)
-            if i.info.longitud = valor
+        while (i != None):
+            if (i.info.longitud == valor):
                 salida.Encolar(i.info)
             i = i.sig
         return salida
