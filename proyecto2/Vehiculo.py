@@ -20,5 +20,8 @@ class Vehiculo:
         self.color = c
         Vehiculo.i += 1
         
+    def __str__(self):
+        outStr = '--> ... ' + self.p + ' ' + self.l + '\t' + self.m + '\t' + self.a + '\t' + self.c 
+        return outStr
         
         

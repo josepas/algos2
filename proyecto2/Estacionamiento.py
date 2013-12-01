@@ -60,7 +60,38 @@ class Estacionamiento(Cola):
                     v = vtmp
                 else:
                     # tmp.Estacionar(vtmp) ---- esto no se si funcionaria :0
-                    self.ultimo.Estacionar(vtmp)
+                    self.ultimo.info.Estacionar(vtmp)
             self.Destruir()
             return v
+            
+
+    def Busqueda(self, selec, valor):
+        salida = Cola()        
+        i = self.cabeza
+        while (i != None):
+            if (selec == 'color'):
+                salida = i.GetColor(salida, valor)
+                
+            elif (selec == 'longitud'):
+                salida = i.GetLongitud(salida, valor)
+                
+            elif (selec == 'anyo'):
+                salida = i.GetAnyo(salida, valor)
+                
+            elif (selec == 'modelo'):
+                salida = i.GetModelo(salida, valor)
+
+            i = i.sig
+        return salida
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             

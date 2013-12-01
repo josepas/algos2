@@ -113,15 +113,12 @@ class Evento:
         elif (codigo == 'B'):
             # Lectura
             codigo, selec, valor = self.string.split()
+
+            salida = e.Busqueda(selec, valor)
+            s.write('--> Vehiculos de', selec, valor)
+            salida.Imprimir()
+
             
-        
-        
-        
-        
-        
-        
-        
-        
         elif (codigo == 'K'):
             s.write('--> Se destruyen estacionamiento, tubos y vehiculos remanentes')
             s.write('--> Adios')
