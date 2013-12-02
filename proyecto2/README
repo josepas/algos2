@@ -2,3 +2,6 @@ Voy a empezar hoy en con la Implementacion de Pila y Cola
 
 01/12 Existe esta hecho para que cuando te preguntan solo si el vehiculo esta en el estacionamiento se mantenga el ultimo
 que llevaba la cola de tubos en ese momento?
+
+Peos con los imports circulares Evento y Estacionamiento
+

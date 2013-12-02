@@ -8,14 +8,17 @@
 #
 # Ultima Modificacion: 5 / 12 / 2013
 
+from cola import *
 from Estacionamiento import Estacionamiento
 from Vehiculo import Vehiculo
     
 class Evento:
     def __init__(self, string):
         self.string = string
-        self.Procesar()
+        self.Procesar() # Esto creo que dara problemas
 
+    
+        
     def Procesar(self):
         s = open('Traza.txt', 'w')
         codigo = self.string[0]
@@ -112,6 +115,10 @@ class Evento:
             s.write('--> Se destruyen estacionamiento, tubos y vehiculos remanentes')
             s.write('--> Adios')
             s.close()
+
+E = Estacionamiento()
+E.ProcesarLlegadas(casoDePrueba.txt)
+
 
             
         

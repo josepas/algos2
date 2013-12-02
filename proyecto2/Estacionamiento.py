@@ -10,7 +10,6 @@
 
 from cola import *
 from Tubo import Tubo
-from Evento import Evento
 from random import *
 
 class Estacionamiento(Cola):
@@ -89,6 +88,9 @@ class Estacionamiento(Cola):
         for i in f:
             print(i.strip()) # flag
             h = Evento(i.strip())
+            
+
+
             
             
             
