@@ -15,7 +15,7 @@ from random import *
 class Estacionamiento(Cola):
     i = 0
     def __init__(self):
-        seed()
+        seed(0.101101)
         self.iden = Estacionamiento.i
         Estacionamiento.i += 1 
         super().__init__() #inicializa la cola
@@ -28,39 +28,43 @@ class Estacionamiento(Cola):
     def Destruir(self):
             self.Desencolar()
     
+    def Iterar(self, i):
+        while(self.Tope().iden != i):
+            self.Encolar(self.Tope())
+            self.Desencolar()
+
     def Estacionar(self, v):
-        for i in range(0, self.tam):
-            if(self.Tope().Cabe(v)):
-                self.Tope().Estacionar(v)
-                return self.Tope().iden
-            else:
-                self.Encolar(self.Tope())
-                self.Desencolar()
-        tmp = self.Generar()
-        tmp.Estacionar(v)
-        return tmp.iden
+        if(self.Vacia()):
+            self.Generar()
+            self.Tope().Estacionar(v)
+        elif(self.Tope().Cabe(v)):
+            self.Tope().Estacionar(v)
+        else:
+            aux = self.Generar()
+            self.Iterar(aux.iden)
+            self.Tope().Estacionar(v)
+        return self.Tope().iden
 
     def Existe(self, placa, ticket):
-        i = self.Tope()
-        while(i.iden != ticket):
-            self.Encolar(i)
-            self.Desencolar()
-            i = self.Tope()
-        return i.Existe("Placa", placa)
+        self.Iterar(ticket)
+        tubo = self.Tope()
+        return tubo.Existe("Placa", placa)
 
     def Retirar(self, placa, ticket):
         if(self.Existe(placa, ticket)):
             tubo = self.Tope()
-            self.Generar(tubo.iden, tubo.capacidad)
+            aux = Tubo(tubo.iden, tubo.capacidad)
             while(tubo.ocupacion > 0):
                 vtmp = tubo.Cercano()
                 tubo.Retirar()
                 if(vtmp.placa == placa):
                     v = vtmp
                 else:
-                    # tmp.Estacionar(vtmp) ---- esto no se si funcionaria :0
-                    self.ultimo.info.Estacionar(vtmp)
+                    aux.Estacionar(vtmp)
             self.Destruir()
+            if not aux.Vacia():
+                self.Encolar(aux)
+                self.Iterar(aux.iden)
             return v
             
 
@@ -82,20 +86,7 @@ class Estacionamiento(Cola):
 
             i = i.sig
         return salida
-        
 
-            
-
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+    def Vaciar(self, etiqueta):
+        self.Iterar(etiqueta)
+        self.Destruir()
