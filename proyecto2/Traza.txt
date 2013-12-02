@@ -1,0 +1,4 @@
+--> Se crea EstacionamientoTolon_Andromeda_Traza--> Se crea EstacionamientoTolon_Andromeda_Traza
+--> Se crea EstacionamientoTolon_Andromeda_Traza
+--> Entra VehiculoAAAZ001de longitud2--> Se crea EstacionamientoTolon_Andromeda_Traza
+--> Entra VehiculoAAAZ001de longitud2

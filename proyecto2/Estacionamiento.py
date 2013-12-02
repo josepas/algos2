@@ -83,11 +83,7 @@ class Estacionamiento(Cola):
             i = i.sig
         return salida
         
-    def ProcesarLlegadas(self, archivo):
-        f = open(archivo, 'r')
-        for i in f:
-            print(i.strip()) # flag
-            h = Evento(i.strip())
+
             
 
 
