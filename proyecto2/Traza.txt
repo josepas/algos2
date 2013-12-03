@@ -1,4 +1,4 @@
---> Se crea EstacionamientoTolon_Andromeda_Traza--> Se crea EstacionamientoTolon_Andromeda_Traza
---> Se crea EstacionamientoTolon_Andromeda_Traza
---> Entra VehiculoAAAZ001de longitud2--> Se crea EstacionamientoTolon_Andromeda_Traza
---> Entra VehiculoAAAZ001de longitud2
+--> Se crea Estacionamiento Tolon_Andromeda
+--> Entra Vehiculo AAAZ001 de longitud 2
+--> No existe Tubo disponible 
+--> Se crea Tubo 0 de capacidad 8 y ocupacion 0

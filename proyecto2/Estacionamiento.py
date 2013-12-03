@@ -14,8 +14,9 @@ from random import *
 
 class Estacionamiento(Cola):
     i = 0
-    def __init__(self):
+    def __init__(self, nombre):
         seed(0.101101)
+        self.nombre = nombre
         self.iden = Estacionamiento.i
         Estacionamiento.i += 1 
         super().__init__() #inicializa la cola
@@ -90,3 +91,4 @@ class Estacionamiento(Cola):
     def Vaciar(self, etiqueta):
         self.Iterar(etiqueta)
         self.Destruir()
+        

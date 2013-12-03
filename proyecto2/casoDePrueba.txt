@@ -1,9 +1,9 @@
-C	Tolon_Andromeda_Traza.txt
+C	Tolon_Andromeda.txt
 
 P	AAAZ001	2	Chery	2012	Rojo
 P	AA0011W	3	Veniran	2011	Azul
-P	BBB00W2	2,5	Corolla	2013	Rojo
-P	BBAGK90	3,5	Ford350	1990	Amarillo
+P	BBB00W2	2.5	Corolla	2013	Rojo
+P	BBAGK90	3.5	Ford350	1990	Amarillo
 P	CCC999M	2	SKA	2012	Verde
 P	N0J0D45	3	4Runner	2013	Rojo
 P	GL0B0B0	3	Explorer	2005	Rojo
@@ -13,8 +13,8 @@ P	3XCE505	3	Veniran	2012	Blanco
 P	AAA111Q	2	Chery	2012	Rojo
 P	BAAZ001	2	Chery	2012	Amarillo
 P	BA0011W	3	Veniran	2011	Azul
-P	CBB00W2	2,5	Corolla	2013	Verde
-P	CBAGK90	3,5	Ford350	1990	Rojo
+P	CBB00W2	2.5	Corolla	2013	Verde
+P	CBAGK90	3.5	Ford350	1990	Rojo
 P	DCC999M	2	SKA	2012	Rojo
 P	N0J0D35	3	4Runner	2013	Negro
 P	6I0BOB0	3	Explorer	2005	Azul
