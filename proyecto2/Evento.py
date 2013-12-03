@@ -33,6 +33,7 @@ class Evento:
             nombre = self.string.split()[-1].strip('.txt')
             e = Estacionamiento(nombre)
             s.write('--> Se crea Estacionamiento ' + e.nombre + '\n')
+            s.write('\n')
 
         elif (codigo == 'P'):
             # Lectura
@@ -69,8 +70,9 @@ class Evento:
                 s.write('--> Se coloca Tubo ' + str(aux.iden) + ' de ultimo en la cola de tubos de '  +  e.nombre + '\n')
                 s.write('--> Se corren los tubos hasta que el Tubo ' + str(aux.iden) + ' es el Primero ' + '\n')
                 s.write('--> Se Estaciona Vehiculo ' + nuevo.placa + ' en Tubo ' + str(e.Tope().iden) + ' (ocupacion ' + str(e.Tope().ocupacion) + ') ' + '\n')
-                
-        
+                s.write('\n')
+            s.write('\n')
+            
         elif (codigo == 'R'):
             ## Lectura
             codigo, p, t = self.string.split()
@@ -84,7 +86,7 @@ class Evento:
                 s.write('--> Vehiculo ' + p + ' EXISTE en Tubo ' + str(t) + '\n')
                 s.write('--> Se corren los tubos hasta que el Tubo ' + str(t) + ' sea el Primero ' + '\n')
                 s.write('--> Se crea un Tubo auxiliar con capacidad de Tubo ' + str(t) + ' (' + str(e.Tope().capacidad) + ') y ocupacion 0' + '\n')
-
+                
                 # Se retira el vehiculo 
                 
                 e.Retirar(p, t)
@@ -92,15 +94,16 @@ class Evento:
                 s.write('--> Sale Vehiculo ' + p + '\n')
                 s.write('--> Se elimina Tubo ' + str(e.Tope().iden) + '\n')
                 
+                
                 if ( e.Tope().iden == t ):
                     s.write('--> Tubo auxiliar es ahora Tubo ' + str(e.Tope().iden) + ' con ocupacion ' + str(e.Tope().ocupacion) + '\n')
                     s.write('--> Se coloca Tubo ' + str(e.Tope().iden) + ' de ultimo en la cola de tubos de ' + e.nombre + '\n')
                     s.write('--> Se corren los tubos hasta que el Tubo ' + str(e.Tope().iden) + ' sea el Primero ' + '\n')
-
             else:
                 s.write('--> NO EXISTE Vehiculo ' + p + ' en Tubo ' + str(t) + '\n')
-                
-                
+
+            s.write('\n')
+        
         elif (codigo == 'E'):
             # Lectura
             codigo, p, t = self.string.split()
@@ -109,7 +112,7 @@ class Evento:
                 s.write('--> Vehiculo ' + p + ' EXISTE en Tubo ' + str(t) + '\n')
             else:
                 s.write('--> NO EXISTE Vehiculo ' + p + ' en Tubo ' + str(t) + '\n')
-        
+            s.write('\n')
         
         elif (codigo == 'B'):
             # Lectura
