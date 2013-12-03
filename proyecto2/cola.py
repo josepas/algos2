@@ -54,4 +54,10 @@ class Cola:
             print(aux.info)
             aux = aux.sig
     
-  
+    def __str__(self):
+        aux = ""
+        i = self.cabeza
+        while(i != None):
+            aux += str(i.info)
+            i = i.sig
+        return aux

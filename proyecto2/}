@@ -1,0 +1,26 @@
+from Estacionamiento import Estacionamiento
+from Vehiculo import Vehiculo
+
+#p = Estacionamiento.Estacionamiento()
+#v1 = Vehiculo(1, "A11", "cadillac", 91, "rojo")
+#v2 = Vehiculo(1, "A22", "cadillac", 92, "rojo")
+#v3 = Vehiculo(1, "A33", "cadillac", 93, "rojo")
+#v4 = Vehiculo(1, "A44", "cadillac", 94, "rojo")
+#
+#t1 = p.Estacionar(v1)
+#t2 = p.Estacionar(v2)
+#t3 = p.Estacionar(v3)
+#t4 = p.Estacionar(v4)
+#
+#print (p.Existe("A11", t1))
+#
+#p.Retirar("A11", t1)
+#
+#print (p.Existe("A11", t1))
+#
+#p.Imprimir()
+#p.Destruir()
+#p.Imprimir()
+#p.Destruir()
+
+p = Evento("C")

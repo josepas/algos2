@@ -71,7 +71,6 @@ class Tubo(Pila):
        
         while (i != None):
             if (i.info.color == valor):
-                print('-------------- Aqui debi encolar un carro -------------')
                 salida.Encolar(i.info)
             i = i.sig
         return salida

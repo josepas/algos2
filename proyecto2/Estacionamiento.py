@@ -72,13 +72,11 @@ class Estacionamiento(Cola):
             
 
     def Busqueda(self, selec, valor):
-        print(selec)
         salida = Cola()        
         i = self.cabeza
         while (i != None):
             
             if (selec == 'Color'):
-                print('Hola como estas')
                 salida = i.info.GetColor(salida, valor)
                 
             elif (selec == 'Longitud'):
