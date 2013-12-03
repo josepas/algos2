@@ -2,3 +2,61 @@
 --> Entra Vehiculo AAAZ001 de longitud 2
 --> No existe Tubo disponible 
 --> Se crea Tubo 0 de capacidad 8 y ocupacion 0
+--> Se coloca Tubo 0 de ultimo en la cola de tubos de Tolon_Andromeda
+--> Se corren los tubos hasta que el Tubo 0 es el Primero 
+--> Se Estaciona Vehiculo AAAZ001 en Tubo 0 (ocupacion2.0) 
+--> Entra Vehiculo AA0011W de longitud 3
+--> Se Estaciona Vehiculo AA0011W en Tubo 0 (ocupacion5.0) 
+--> Entra Vehiculo BBB00W2 de longitud 2.5
+--> Se Estaciona Vehiculo BBB00W2 en Tubo 0 (ocupacion7.5) 
+--> Entra Vehiculo BBAGK90 de longitud 3.5
+--> Capacidad Tubo 0 Excedida
+--> Se crea Tubo 1 de capacidad 23 y ocupacion 3.5
+--> Se coloca Tubo 1 de ultimo en la cola de tubos de Tolon_Andromeda
+--> Se corren los tubos hasta que el Tubo 1 es el Primero 
+--> Se Estaciona Vehiculo BBAGK90 en Tubo 1 (ocupacion 3.5) 
+--> Entra Vehiculo CCC999M de longitud 2
+--> Se Estaciona Vehiculo CCC999M en Tubo 1 (ocupacion5.5) 
+--> Entra Vehiculo N0J0D45 de longitud 3
+--> Se Estaciona Vehiculo N0J0D45 en Tubo 1 (ocupacion8.5) 
+--> Entra Vehiculo GL0B0B0 de longitud 3
+--> Se Estaciona Vehiculo GL0B0B0 en Tubo 1 (ocupacion11.5) 
+--> Entra Vehiculo ZZTOP01 de longitud 4
+--> Se Estaciona Vehiculo ZZTOP01 en Tubo 1 (ocupacion15.5) 
+--> Entra Vehiculo ZZZZ111 de longitud 2
+--> Se Estaciona Vehiculo ZZZZ111 en Tubo 1 (ocupacion17.5) 
+--> Entra Vehiculo 3XCE505 de longitud 3
+--> Se Estaciona Vehiculo 3XCE505 en Tubo 1 (ocupacion20.5) 
+--> Entra Vehiculo AAA111Q de longitud 2
+--> Se Estaciona Vehiculo AAA111Q en Tubo 1 (ocupacion22.5) 
+--> Entra Vehiculo BAAZ001 de longitud 2
+--> Capacidad Tubo 1 Excedida
+--> Se crea Tubo 2 de capacidad 24 y ocupacion 2.0
+--> Se coloca Tubo 2 de ultimo en la cola de tubos de Tolon_Andromeda
+--> Se corren los tubos hasta que el Tubo 2 es el Primero 
+--> Se Estaciona Vehiculo BAAZ001 en Tubo 2 (ocupacion 2.0) 
+--> Entra Vehiculo BA0011W de longitud 3
+--> Se Estaciona Vehiculo BA0011W en Tubo 2 (ocupacion5.0) 
+--> Entra Vehiculo CBB00W2 de longitud 2.5
+--> Se Estaciona Vehiculo CBB00W2 en Tubo 2 (ocupacion7.5) 
+--> Entra Vehiculo CBAGK90 de longitud 3.5
+--> Se Estaciona Vehiculo CBAGK90 en Tubo 2 (ocupacion11.0) 
+--> Entra Vehiculo DCC999M de longitud 2
+--> Se Estaciona Vehiculo DCC999M en Tubo 2 (ocupacion13.0) 
+--> Entra Vehiculo N0J0D35 de longitud 3
+--> Se Estaciona Vehiculo N0J0D35 en Tubo 2 (ocupacion16.0) 
+--> Entra Vehiculo 6I0BOB0 de longitud 3
+--> Se Estaciona Vehiculo 6I0BOB0 en Tubo 2 (ocupacion19.0) 
+--> Entra Vehiculo WWTOP02 de longitud 4
+--> Se Estaciona Vehiculo WWTOP02 en Tubo 2 (ocupacion23.0) 
+--> Entra Vehiculo YYYY111 de longitud 2
+--> Capacidad Tubo 2 Excedida
+--> Se crea Tubo 3 de capacidad 7 y ocupacion 2.0
+--> Se coloca Tubo 3 de ultimo en la cola de tubos de Tolon_Andromeda
+--> Se corren los tubos hasta que el Tubo 3 es el Primero 
+--> Se Estaciona Vehiculo YYYY111 en Tubo 3 (ocupacion 2.0) 
+--> Entra Vehiculo EXC3SOS de longitud 3
+--> Se Estaciona Vehiculo EXC3SOS en Tubo 3 (ocupacion5.0) 
+--> Entra Vehiculo WWW1110 de longitud 2
+--> Se Estaciona Vehiculo WWW1110 en Tubo 3 (ocupacion7.0) 
+--> Vehiculos de Color Rojo

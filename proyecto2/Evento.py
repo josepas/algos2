@@ -51,24 +51,24 @@ class Evento:
                 s.write('--> No existe Tubo disponible ' + '\n')
                 aux = e.Generar()
                 s.write('--> Se crea Tubo ' + str(aux.iden) + ' de capacidad ' + str(aux.capacidad) + ' y ocupacion ' + str(aux.ocupacion) + '\n') 
-                s.write('--> Se coloca Tubo ' + aux.iden + ' de ultimo en la cola de tubos de ' + e.nombre + '\n')
-                s.write('--> Se corren los tubos hasta que el Tubo ' + aux.iden + ' es el Primero ' + '\n')
+                s.write('--> Se coloca Tubo ' + str(aux.iden) + ' de ultimo en la cola de tubos de ' + e.nombre + '\n')
+                s.write('--> Se corren los tubos hasta que el Tubo ' + str(aux.iden) + ' es el Primero ' + '\n')
                 e.Iterar(aux.iden)
             
             # Intento estacionar el carro en el tubo actual
             if ( e.Tope().Cabe(nuevo) ):
                 e.Estacionar(nuevo)
-                s.write('--> Se Estaciona Vehiculo ' + nuevo.p + ' en Tubo ' + e.Tope().iden + ' (ocupacion' + e.Tope().ocupacion + ') ' + '\n')
+                s.write('--> Se Estaciona Vehiculo ' + nuevo.placa + ' en Tubo ' + str(e.Tope().iden) + ' (ocupacion' + str(e.Tope().ocupacion) + ') ' + '\n')
             # Al no encontrar tubo con capacidad se crea uno nuevo
             else:
-                s.write('--> Capacidad Tubo ' + e.Tope().iden + ' Excedida' + '\n')
+                s.write('--> Capacidad Tubo ' + str(e.Tope().iden) + ' Excedida' + '\n')
                 aux = e.Generar()         
                 e.Iterar(aux.iden)
                 e.Estacionar(nuevo)
-                s.write('--> Se crea Tubo ' + aux.iden + ' de capacidad ' + aux.capacidad + ' y ocupacion ' + aux.ocupacion + '\n') 
-                s.write('--> Se coloca Tubo ' + aux.iden + ' de ultimo en la cola de tubos de '  +  e.nombre + '\n')
-                s.write('--> Se corren los tubos hasta que el Tubo ' + aux.iden + ' es el Primero ' + '\n')
-                s.write('--> Se Estaciona Vehiculo ' + nuevo.p + ' en Tubo ' + e.Tope().iden + ' (ocupacion ' + e.Tope().ocupacion + ') ' + '\n')
+                s.write('--> Se crea Tubo ' + str(aux.iden) + ' de capacidad ' + str(aux.capacidad) + ' y ocupacion ' + str(aux.ocupacion) + '\n') 
+                s.write('--> Se coloca Tubo ' + str(aux.iden) + ' de ultimo en la cola de tubos de '  +  e.nombre + '\n')
+                s.write('--> Se corren los tubos hasta que el Tubo ' + str(aux.iden) + ' es el Primero ' + '\n')
+                s.write('--> Se Estaciona Vehiculo ' + nuevo.placa + ' en Tubo ' + str(e.Tope().iden) + ' (ocupacion ' + str(e.Tope().ocupacion) + ') ' + '\n')
                 
         
         elif (codigo == 'R'):
@@ -81,24 +81,24 @@ class Evento:
             
             # Se verifica si el vehiculo existe en el Estacionamiento
             if e.Existe(p, t):
-                s.write('--> Vehiculo ' + p + ' EXISTE en Tubo ' + t + '\n')
-                s.write('--> Se corren los tubos hasta que el Tubo ' + t + ' sea el Primero ' + '\n')
-                s.write('--> Se crea un Tubo auxiliar con capacidad de Tubo ' + t + ' (' + e.Tope().capacidad + ') y ocupacion 0' + '\n')
+                s.write('--> Vehiculo ' + p + ' EXISTE en Tubo ' + str(t) + '\n')
+                s.write('--> Se corren los tubos hasta que el Tubo ' + str(t) + ' sea el Primero ' + '\n')
+                s.write('--> Se crea un Tubo auxiliar con capacidad de Tubo ' + str(t) + ' (' + str(e.Tope().capacidad) + ') y ocupacion 0' + '\n')
 
                 # Se retira el vehiculo 
                 
                 e.Retirar(p, t)
-                s.write('--> Se mueven Vehiculos del Tubo ' + t + ' al Tubo auxiliar ' + '\n')
+                s.write('--> Se mueven Vehiculos del Tubo ' + str(t) + ' al Tubo auxiliar ' + '\n')
                 s.write('--> Sale Vehiculo ' + p + '\n')
-                s.write('--> Se elimina Tubo ' + e.Tope().iden + '\n')
+                s.write('--> Se elimina Tubo ' + str(e.Tope().iden) + '\n')
                 
                 if ( e.Tope().iden == t ):
-                    s.write('--> Tubo auxiliar es ahora Tubo ' + e.Tope().iden + ' con ocupacion ' + e.Tope().ocupacion + '\n')
-                    s.write('--> Se coloca Tubo ' + e.Tope().iden + ' de ultimo en la cola de tubos de ' + e.nombre + '\n')
-                    s.write('--> Se corren los tubos hasta que el Tubo ' + e.Tope().iden + ' sea el Primero ' + '\n')
+                    s.write('--> Tubo auxiliar es ahora Tubo ' + str(e.Tope().iden) + ' con ocupacion ' + str(e.Tope().ocupacion) + '\n')
+                    s.write('--> Se coloca Tubo ' + str(e.Tope().iden) + ' de ultimo en la cola de tubos de ' + e.nombre + '\n')
+                    s.write('--> Se corren los tubos hasta que el Tubo ' + str(e.Tope().iden) + ' sea el Primero ' + '\n')
 
             else:
-                s.write('--> NO EXISTE Vehiculo ' + p + ' en Tubo ' + t + '\n')
+                s.write('--> NO EXISTE Vehiculo ' + p + ' en Tubo ' + str(t) + '\n')
                 
                 
         elif (codigo == 'E'):
@@ -106,9 +106,9 @@ class Evento:
             codigo, p, t = self.string.split()
 
             if e.Existe(p, t):
-                s.write('--> Vehiculo ' + p + ' EXISTE en Tubo ' + t + '\n')
+                s.write('--> Vehiculo ' + p + ' EXISTE en Tubo ' + str(t) + '\n')
             else:
-                s.write('--> NO EXISTE Vehiculo ' + p + ' en Tubo ' + t + '\n')
+                s.write('--> NO EXISTE Vehiculo ' + p + ' en Tubo ' + str(t) + '\n')
         
         
         elif (codigo == 'B'):

@@ -13,10 +13,10 @@ class Vehiculo:
     i = 0
     def __init__(self, p, l, m, a, c): 
         self.iden = Vehiculo.i
-        self.longitud = l 
+        self.longitud = float(l) 
         self.placa = p
         self.modelo = m 
-        self.anyo = a
+        self.anyo = int(a)
         self.color = c
         Vehiculo.i += 1
         
