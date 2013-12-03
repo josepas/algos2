@@ -118,7 +118,7 @@ class Evento:
 
             salida = e.Busqueda(selec, valor)
             s.write('--> Vehiculos de ' + selec + ' ' + valor + '\n')
-            salida.Imprimir()
+            s.write(str(salida) + '\n')
             
         elif (codigo == 'K'):
             s.write('--> Se destruyen estacionamiento, tubos y vehiculos remanentes' + '\n')
