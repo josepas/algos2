@@ -17,7 +17,7 @@ class Evento:
     def __init__(self, string):
         self.string = string
         if (self.string != ''):
-            self.Procesar() # Esto creo que dara problemas
+            self.Procesar()
 
     def ProcesarLlegadas(self, archivo):
         f = open(archivo, 'r')
@@ -70,7 +70,6 @@ class Evento:
                 s.write('--> Se coloca Tubo ' + str(aux.iden) + ' de ultimo en la cola de tubos de '  +  e.nombre + '\n')
                 s.write('--> Se corren los tubos hasta que el Tubo ' + str(aux.iden) + ' es el Primero ' + '\n')
                 s.write('--> Se Estaciona Vehiculo ' + nuevo.placa + ' en Tubo ' + str(e.Tope().iden) + ' (ocupacion ' + str(e.Tope().ocupacion) + ') ' + '\n')
-                s.write('\n')
             s.write('\n')
             
         elif (codigo == 'R'):
@@ -79,16 +78,15 @@ class Evento:
             
             #
             # Retirar Vehiculos
+            # Se verifica si el vehiculo existe en el Estacionamiento
             #
             
-            # Se verifica si el vehiculo existe en el Estacionamiento
             if e.Existe(p, t):
                 s.write('--> Vehiculo ' + p + ' EXISTE en Tubo ' + str(t) + '\n')
                 s.write('--> Se corren los tubos hasta que el Tubo ' + str(t) + ' sea el Primero ' + '\n')
                 s.write('--> Se crea un Tubo auxiliar con capacidad de Tubo ' + str(t) + ' (' + str(e.Tope().capacidad) + ') y ocupacion 0' + '\n')
                 
                 # Se retira el vehiculo 
-                
                 e.Retirar(p, t)
                 s.write('--> Se mueven Vehiculos del Tubo ' + str(t) + ' al Tubo auxiliar ' + '\n')
                 s.write('--> Sale Vehiculo ' + p + '\n')
@@ -121,7 +119,6 @@ class Evento:
             salida = e.Busqueda(selec, valor)
             s.write('--> Vehiculos de ' + selec + ' ' + valor + '\n')
             salida.Imprimir()
-
             
         elif (codigo == 'K'):
             s.write('--> Se destruyen estacionamiento, tubos y vehiculos remanentes' + '\n')

@@ -36,7 +36,6 @@ class Estacionamiento(Cola):
             self.Desencolar()
             cota += 1
             
-            
     def Estacionar(self, v):
         if(self.Vacia()):
             self.Generar()
@@ -73,20 +72,23 @@ class Estacionamiento(Cola):
             
 
     def Busqueda(self, selec, valor):
+        print(selec)
         salida = Cola()        
         i = self.cabeza
         while (i != None):
-            if (selec == 'color'):
-                salida = i.GetColor(salida, valor)
+            
+            if (selec == 'Color'):
+                print('Hola como estas')
+                salida = i.info.GetColor(salida, valor)
                 
-            elif (selec == 'longitud'):
-                salida = i.GetLongitud(salida, valor)
+            elif (selec == 'Longitud'):
+                salida = i.info.GetLongitud(salida, valor)
                 
-            elif (selec == 'anyo'):
-                salida = i.GetAnyo(salida, valor)
+            elif (selec == 'Anyo'):
+                salida = i.info.GetAnyo(salida, valor)
                 
-            elif (selec == 'modelo'):
-                salida = i.GetModelo(salida, valor)
+            elif (selec == 'Modelo'):
+                salida = i.info.GetModelo(salida, valor)
 
             i = i.sig
         return salida

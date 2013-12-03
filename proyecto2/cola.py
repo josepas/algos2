@@ -47,8 +47,10 @@ class Cola:
         return (self.tam == 0)
         
     def Imprimir(self):
+        print('------------------------- Hola entre a Cola.Imprimir() --------------------') #borrar
         aux = self.cabeza
         while (aux != None):
+            print('------------------------- Hola mas adentro() --------------------') #borrar
             print(aux.info)
             aux = aux.sig
     

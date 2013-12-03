@@ -21,7 +21,7 @@ class Vehiculo:
         Vehiculo.i += 1
         
     def __str__(self):
-        outStr = '--> ... ' + self.p + ' ' + self.l + '\t' + self.m + '\t' + self.a + '\t' + self.c 
+        outStr = '--> ... ' + self.placa + ' ' + str(self.longitud) + '\t' + self.modelo + '\t' + str(self.anyo) + '\t' + self.color 
         return outStr
         
         
