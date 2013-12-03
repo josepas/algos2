@@ -68,10 +68,8 @@ class Tubo(Pila):
             
     def GetColor(self, salida, valor):
         i = self.cabeza
-       
         while (i != None):
             if (i.info.color == valor):
-                print('-------------- Aqui debi encolar un carro -------------')
                 salida.Encolar(i.info)
             i = i.sig
         return salida
@@ -79,7 +77,7 @@ class Tubo(Pila):
     def GetAnyo(self, salida, valor):
         i = self.cabeza
         while (i != None):
-            if (i.info.anyo == valor):
+            if (i.info.anyo == int(valor)):
                 salida.Encolar(i.info)
             i = i.sig
         return salida
@@ -92,7 +90,7 @@ class Tubo(Pila):
             i = i.sig
         return salida
     
-    def GetLongitud(self, salida, valor):
+    def GetLongitud(self, salida, float(valor)):
         i = self.cabeza
         while (i != None):
             if (i.info.longitud == valor):
