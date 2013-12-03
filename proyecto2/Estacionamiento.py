@@ -30,10 +30,13 @@ class Estacionamiento(Cola):
             self.Desencolar()
     
     def Iterar(self, i):
-        while(self.Tope().iden != i):
+        cota = 0 
+        while(self.Tope().iden != i and cota < self.tam):
             self.Encolar(self.Tope())
             self.Desencolar()
-
+            cota += 1
+            
+            
     def Estacionar(self, v):
         if(self.Vacia()):
             self.Generar()
