@@ -75,7 +75,8 @@ class Evento:
         elif (codigo == 'R'):
             ## Lectura
             codigo, p, t = self.string.split()
-            
+           
+            t = int(t)
             #
             # Retirar Vehiculos
             # Se verifica si el vehiculo existe en el Estacionamiento
@@ -106,11 +107,16 @@ class Evento:
             # Lectura
             codigo, p, t = self.string.split()
 
+            actual = e.Tope().iden
+            t = int(t)
+
             if e.Existe(p, t):
                 s.write('--> Vehiculo ' + p + ' EXISTE en Tubo ' + str(t) + '\n')
             else:
                 s.write('--> NO EXISTE Vehiculo ' + p + ' en Tubo ' + str(t) + '\n')
             s.write('\n')
+
+            e.Iterar(actual)
         
         elif (codigo == 'B'):
             # Lectura

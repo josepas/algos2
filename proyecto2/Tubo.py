@@ -49,22 +49,21 @@ class Tubo(Pila):
     def Cercano(self):
         return self.Tope()
 
-    def Existe(self, atributo, valor):
-        if(atributo == "Placa"):
-            aux = Pila()
-            esta = False
-            while not (self.Vacia() or esta):
-                tmp = self.Tope()
-                if(tmp.placa == valor):
-                    esta = True
-                else:
-                    aux.Empilar(tmp)
-                    self.Desempilar()
-            while not aux.Vacia():
-                tmp = aux.Tope()
-                self.Empilar(tmp)
-                aux.Desempilar()
-            return esta
+    def Existe(self, valor):
+        aux = Pila()
+        esta = False
+        while not (self.Vacia() or esta):
+            tmp = self.Tope()
+            if(tmp.placa == valor):
+                esta = True
+            else:
+                aux.Empilar(tmp)
+                self.Desempilar()
+        while not aux.Vacia():
+            tmp = aux.Tope()
+            self.Empilar(tmp)
+            aux.Desempilar()
+        return esta
             
     def GetColor(self, salida, valor):
         i = self.cabeza
@@ -90,7 +89,7 @@ class Tubo(Pila):
             i = i.sig
         return salida
     
-    def GetLongitud(self, salida, float(valor)):
+    def GetLongitud(self, salida, valor):
         i = self.cabeza
         while (i != None):
             if (i.info.longitud == valor):

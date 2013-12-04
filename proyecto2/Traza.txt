@@ -93,55 +93,98 @@
 --> ... BBB00W2 2.5	Corolla	2013	Rojo
 --> ... AAAZ001 2.0	Chery	2012	Rojo
 
---> NO EXISTE Vehiculo BBAGK90 en Tubo 0
+--> Vehiculo BBAGK90 EXISTE en Tubo 0
 
---> NO EXISTE Vehiculo GL0B0B0 en Tubo 1
+--> Vehiculo GL0B0B0 EXISTE en Tubo 1
 
---> NO EXISTE Vehiculo BBAGK90 en Tubo 0
+--> Vehiculo BBAGK90 EXISTE en Tubo 0
+--> Se corren los tubos hasta que el Tubo 0 sea el Primero 
+--> Se crea un Tubo auxiliar con capacidad de Tubo 0 (15) y ocupacion 0
+--> Se mueven Vehiculos del Tubo 0 al Tubo auxiliar 
+--> Sale Vehiculo BBAGK90
+--> Se elimina Tubo 0
+--> Tubo auxiliar es ahora Tubo 0 con ocupacion 9.5
+--> Se coloca Tubo 0 de ultimo en la cola de tubos de Tolon_Andromeda
+--> Se corren los tubos hasta que el Tubo 0 sea el Primero 
 
---> NO EXISTE Vehiculo CCC999M en Tubo 0
+--> Vehiculo CCC999M EXISTE en Tubo 0
+--> Se corren los tubos hasta que el Tubo 0 sea el Primero 
+--> Se crea un Tubo auxiliar con capacidad de Tubo 0 (15) y ocupacion 0
+--> Se mueven Vehiculos del Tubo 0 al Tubo auxiliar 
+--> Sale Vehiculo CCC999M
+--> Se elimina Tubo 0
+--> Tubo auxiliar es ahora Tubo 0 con ocupacion 7.5
+--> Se coloca Tubo 0 de ultimo en la cola de tubos de Tolon_Andromeda
+--> Se corren los tubos hasta que el Tubo 0 sea el Primero 
 
---> NO EXISTE Vehiculo GL0B0B0 en Tubo 1
-
---> NO EXISTE Vehiculo ZZTOP01 en Tubo 1
-
---> NO EXISTE Vehiculo BBAGK90 en Tubo 0
-
---> Vehiculo WWW1110 EXISTE en Tubo 1
+--> Vehiculo GL0B0B0 EXISTE en Tubo 1
 --> Se corren los tubos hasta que el Tubo 1 sea el Primero 
---> Se crea un Tubo auxiliar con capacidad de Tubo 1 (16) y ocupacion 0
+--> Se crea un Tubo auxiliar con capacidad de Tubo 1 (24) y ocupacion 0
 --> Se mueven Vehiculos del Tubo 1 al Tubo auxiliar 
---> Sale Vehiculo WWW1110
---> Se elimina Tubo 3
+--> Sale Vehiculo GL0B0B0
+--> Se elimina Tubo 1
+--> Tubo auxiliar es ahora Tubo 1 con ocupacion 19.0
+--> Se coloca Tubo 1 de ultimo en la cola de tubos de Tolon_Andromeda
+--> Se corren los tubos hasta que el Tubo 1 sea el Primero 
+
+--> Vehiculo ZZTOP01 EXISTE en Tubo 1
+--> Se corren los tubos hasta que el Tubo 1 sea el Primero 
+--> Se crea un Tubo auxiliar con capacidad de Tubo 1 (24) y ocupacion 0
+--> Se mueven Vehiculos del Tubo 1 al Tubo auxiliar 
+--> Sale Vehiculo ZZTOP01
+--> Se elimina Tubo 1
+--> Tubo auxiliar es ahora Tubo 1 con ocupacion 15.0
+--> Se coloca Tubo 1 de ultimo en la cola de tubos de Tolon_Andromeda
+--> Se corren los tubos hasta que el Tubo 1 sea el Primero 
+
+--> NO EXISTE Vehiculo BBAGK90 en Tubo 0
+
+--> NO EXISTE Vehiculo WWW1110 en Tubo 1
 
 --> NO EXISTE Vehiculo GL0B0B0 en Tubo 1
 
 --> Entra Vehiculo K4K4001 de longitud 3
---> Se Estaciona Vehiculo K4K4001 en Tubo 3 (ocupacion8.0) 
+--> Se Estaciona Vehiculo K4K4001 en Tubo 1 (ocupacion18.0) 
 
 --> Entra Vehiculo RONALDO de longitud 2
---> Se Estaciona Vehiculo RONALDO en Tubo 3 (ocupacion10.0) 
+--> Se Estaciona Vehiculo RONALDO en Tubo 1 (ocupacion20.0) 
 
 --> Entra Vehiculo MESSI00 de longitud 2
---> Se Estaciona Vehiculo MESSI00 en Tubo 3 (ocupacion12.0) 
+--> Se Estaciona Vehiculo MESSI00 en Tubo 1 (ocupacion22.0) 
 
 --> Entra Vehiculo R00N3YL de longitud 3
---> Se Estaciona Vehiculo R00N3YL en Tubo 3 (ocupacion15.0) 
-
---> Entra Vehiculo AR4NG0Z de longitud 2
---> Capacidad Tubo 3 Excedida
---> Se crea Tubo 4 de capacidad 12 y ocupacion 2.0
+--> Capacidad Tubo 1 Excedida
+--> Se crea Tubo 4 de capacidad 12 y ocupacion 3.0
 --> Se coloca Tubo 4 de ultimo en la cola de tubos de Tolon_Andromeda
 --> Se corren los tubos hasta que el Tubo 4 es el Primero 
---> Se Estaciona Vehiculo AR4NG0Z en Tubo 4 (ocupacion 2.0) 
+--> Se Estaciona Vehiculo R00N3YL en Tubo 4 (ocupacion 3.0) 
+
+--> Entra Vehiculo AR4NG0Z de longitud 2
+--> Se Estaciona Vehiculo AR4NG0Z en Tubo 4 (ocupacion5.0) 
 
 --> NO EXISTE Vehiculo MESSI00 en Tubo 3
 
---> NO EXISTE Vehiculo MESSI00 en Tubo 1
+--> Vehiculo MESSI00 EXISTE en Tubo 1
 
---> NO EXISTE Vehiculo EXC3SOS en Tubo 3
+--> Vehiculo EXC3SOS EXISTE en Tubo 3
+--> Se corren los tubos hasta que el Tubo 3 sea el Primero 
+--> Se crea un Tubo auxiliar con capacidad de Tubo 3 (16) y ocupacion 0
+--> Se mueven Vehiculos del Tubo 3 al Tubo auxiliar 
+--> Sale Vehiculo EXC3SOS
+--> Se elimina Tubo 3
+--> Tubo auxiliar es ahora Tubo 3 con ocupacion 4.0
+--> Se coloca Tubo 3 de ultimo en la cola de tubos de Tolon_Andromeda
+--> Se corren los tubos hasta que el Tubo 3 sea el Primero 
 
---> NO EXISTE Vehiculo MESSI00 en Tubo 1
+--> Vehiculo MESSI00 EXISTE en Tubo 1
+--> Se corren los tubos hasta que el Tubo 1 sea el Primero 
+--> Se crea un Tubo auxiliar con capacidad de Tubo 1 (24) y ocupacion 0
+--> Se mueven Vehiculos del Tubo 1 al Tubo auxiliar 
+--> Sale Vehiculo MESSI00
+--> Se elimina Tubo 1
+--> Tubo auxiliar es ahora Tubo 1 con ocupacion 20.0
+--> Se coloca Tubo 1 de ultimo en la cola de tubos de Tolon_Andromeda
+--> Se corren los tubos hasta que el Tubo 1 sea el Primero 
 
 --> Se destruyen estacionamiento, tubos y vehiculos remanentes
 --> Adios
