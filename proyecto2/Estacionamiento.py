@@ -30,28 +30,21 @@ class Estacionamiento(Cola):
             self.Desencolar()
     
     def Iterar(self, i):
-        cota = 0 
-        while(self.Tope().iden != i and cota < self.tam):
+        cota = 0
+        tope = self.tam
+        while(self.Tope().iden != i and cota < tope):
             self.Encolar(self.Tope())
             self.Desencolar()
             cota += 1
             
     def Estacionar(self, v):
-        if(self.Vacia()):
-            self.Generar()
-            self.Tope().Estacionar(v)
-        elif(self.Tope().Cabe(v)):
-            self.Tope().Estacionar(v)
-        else:
-            aux = self.Generar()
-            self.Iterar(aux.iden)
-            self.Tope().Estacionar(v)
+        self.Tope().Estacionar(v)
         return self.Tope().iden
 
     def Existe(self, placa, ticket):
         self.Iterar(ticket)
         tubo = self.Tope()
-        return tubo.Existe("Placa", placa)
+        return tubo.Existe(placa)
 
     def Retirar(self, placa, ticket):
         if(self.Existe(placa, ticket)):
