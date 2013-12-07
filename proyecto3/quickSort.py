@@ -33,6 +33,7 @@ def QuickSort(A, izq, der):
         QuickSort(A, izq , pivot - 1)
         QuickSort(A, pivot + 1, der)
 
+# Casos de prueba
 for i in range(5):
     A = [randint(0,x) for x in range(1000000)]   
     x = time.time()
