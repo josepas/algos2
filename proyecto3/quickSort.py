@@ -27,17 +27,24 @@ def Particionar(A, izq, der):
     A[der], A[m] = A[m], A[der]
     return m
     
-
-    
 def QuickSort(A, izq, der):
     if (izq < der):
         pivot = Particionar(A, izq, der)
         QuickSort(A, izq , pivot - 1)
         QuickSort(A, pivot + 1, der)
 
-A = [randint(0,x) for x in range(100000)]     
-
-for i in range(20):
+for i in range(5):
+    A = [randint(0,x) for x in range(1000000)]   
     x = time.time()
     QuickSort(A, 0, len(A)-1)  
     print(time.time() - x)
+   
+print()
+print('Ahora veamos a python')
+for i in range(5):
+    A = [randint(0,x) for x in range(1000000)]   
+    x = time.time()
+    A.sort()
+    print(time.time() - x)
+
+
