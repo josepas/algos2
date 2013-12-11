@@ -13,13 +13,35 @@ from random import *
 import time
 
 
-
+def merge(A):
+    if(len(A) == 1):
+        return A
+    m = len(A) // 2
+    izq = merge(A[:m])
+    der = merge(A[m:])
+    i, j = 0, 0
+    final = []
+    while(i < len(izq) and j < len(der)):
+        if(izq[i] <= der[j]):
+            final.append(izq[i])
+            i += 1
+        else:
+            final.append(der[j])
+            j += 1
+    if(i < len(izq)):
+        final += izq[i:]
+    if(j < len(der)):
+        final += der[j:]
+    return final
+    
 
 
 # Casos de prueba
 for i in range(5):
-    A = [randint(0,x) for x in range(1000000)]   
+    A = [randint(0,x) for x in range(1000000)]
+
     x = time.time()
-   
+    
+    A = merge(A)
    
     print(time.time() - x)
