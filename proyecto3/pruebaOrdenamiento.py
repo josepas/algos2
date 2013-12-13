@@ -70,8 +70,8 @@ def estaOrdenado(a):
 # Se retorna una tupla de pares, donde el el primer par
 # es una etiqueta con nombre del algoritmo y el segundo es el tiempo de ejecución en segundos.
 # Por ejemplo si tipo = "nlgn", entonces la tupla tiene la forma:
-# (("Quicksort", tiempo-QS), ("Mergesort", tiempo-MS) ("Heapsort", tiempo-HS))
-# Las etiquetas utilizadas son: "Isertionsort", "Bubblesort0", "Bubblesort1", "Quicksort", "Mergesort" y "Heapsort"
+# (("QuickSort", tiempo-QS), ("MergeSort", tiempo-MS) ("HeapSort", tiempo-HS))
+# Las etiquetas utilizadas son: "IsertionSort", "BubbleSort0", "BubbleSort1", "QuickSort", "MergeSort" y "HeapSort"
 
 def probarAlgoritmos(datos, fcmp, tipo):
 
@@ -83,46 +83,46 @@ def probarAlgoritmos(datos, fcmp, tipo):
         assert(estaOrdenado(arrayResult))
         timeIsertion = time.time() - start_time
 
-        print("Comenzando Bubblesort0")
+        print("Comenzando BubbleSort0")
         start_time = time.time()
         arrayResult = list(datos)
-        bubblesort0(arrayResult, fcmp)
+        bubbleSort0(arrayResult, fcmp)
         assert(estaOrdenado(arrayResult))
-        timeBubblesort0 = time.time() - start_time
+        timeBubbleSort0 = time.time() - start_time
 
-        print("Comenzando Bubblesort1")
+        print("Comenzando BubbleSort1")
         start_time = time.time()
         arrayResult = list(datos)
-        bubblesort1(arrayResult, fcmp)
+        bubbleSort1(arrayResult, fcmp)
         assert(estaOrdenado(arrayResult))
-        timeBubblesort1 = time.time() - start_time
+        timeBubbleSort1 = time.time() - start_time
 
-        time_N_2 = (("Isertionsort", timeIsertion), ("Bubblesort0", timeBubblesort0), ("Bubblesort1", timeBubblesort1))
+        time_N_2 = (("IsertionSort", timeIsertion), ("BubbleSort0", timeBubbleSort0), ("BubbleSort1", timeBubbleSort1))
     else :
         time_N_2 = ()
 
-    print("Comenzando Quicksort")
+    print("Comenzando QuickSort")
     start_time = time.time()
     arrayResult = list(datos)
-    quicksort(arrayResult, fcmp)
+    quickSort(arrayResult, fcmp)
     assert(estaOrdenado(arrayResult))
-    timeQuicksort = time.time() - start_time
+    timeQuickSort = time.time() - start_time
 
-    print("Comenzando Mergesort")
+    print("Comenzando MergeSort")
     start_time = time.time()
     arrayResult = list(datos)
-    mergesort(arrayResult, fcmp)
+    mergeSort(arrayResult, fcmp)
     assert(estaOrdenado(arrayResult))
-    timeMergesort = time.time() - start_time
+    timeMergeSort = time.time() - start_time
 
-    print("Comenzando Heapsort")
+    print("Comenzando HeapSort")
     start_time = time.time()
     arrayResult = list(datos)
-    heapsort(arrayResult, fcmp)
+    heapSort(arrayResult, fcmp)
     assert(estaOrdenado(arrayResult))
-    timeHeapsort = time.time() - start_time
+    timeHeapSort = time.time() - start_time
 
-    time_N_lg_N = (("Quicksort", timeQuicksort), ("Mergesort", timeMergesort), ("Heapsort", timeHeapsort))
+    time_N_lg_N = (("QuickSort", timeQuickSort), ("MergeSort", timeMergeSort), ("HeapSort", timeHeapSort))
 
     print(time_N_lg_N + time_N_2) # Solo como muestra, eliminar para la entrega
 

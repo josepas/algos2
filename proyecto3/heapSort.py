@@ -19,11 +19,10 @@ import time
 
 def Heapify(A, i, n):
     # Caso Base
-    # Si mi primer hijo esta fuera del arreglo (no tengo hijos) entonces termine
+    # No tengo hijos
     if (2 * i + 1 > n):
         return
-    # Si mi segundo hijo esta fuera del arreglo (tengo un solo hijo) 
-    # entonces solo puedo comparar con mi unico hijo (izquierdo)
+    # Tengo un solo hijo 
     if (2 * i + 2 > n):
         k = 2 * i + 1
     # Tengo mas de un hijo, busco el mayor
@@ -33,7 +32,7 @@ def Heapify(A, i, n):
         else:
             k = 2 * i + 2
     
-    # Intercambio al padre por su hijo mayor
+    # Intercambio al padre por su hijo mayor que el
     if (A[k] > A[i]):
         A[k], A[i] = A[i], A[k]
         Heapify(A,k,n)
@@ -43,16 +42,10 @@ def ConstruirHeap(A,n):
         Heapify(A,i,n)
 
 def HeapSort(A,n):
+    n -= 1
     ConstruirHeap(A,n)
     for i in range(n, 0, -1):
         A[0], A[i] =  A[i], A[0]
         Heapify(A, 0, i - 1)
  
-print('Pruebas con 1000.000 Elementos')
-for i in range(5):
-    A = [randint(0,10) for x in range(100000)] 
-    x = time.time()
-    HeapSort(A, len(A) - 1) 
-    print(time.time() - x)
-
 
