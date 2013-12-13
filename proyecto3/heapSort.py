@@ -48,6 +48,7 @@ def HeapSort(A,n):
         A[0], A[i] =  A[i], A[0]
         Heapify(A, 0, i - 1)
  
+print('Pruebas con 1000.000 Elementos')
 for i in range(5):
     A = [randint(0,10) for x in range(100000)] 
     x = time.time()

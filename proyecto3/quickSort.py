@@ -34,18 +34,13 @@ def QuickSort(A, izq, der):
         QuickSort(A, pivot + 1, der)
 
 # Casos de prueba
+print('Pruebas con 100.000 elementos')
 for i in range(5):
-    A = [randint(0,x) for x in range(1000000)]   
+    A = [randint(0,x) for x in range(100000)]   
     x = time.time()
     QuickSort(A, 0, len(A)-1)  
     print(time.time() - x)
    
-print()
-print('Ahora veamos a python')
-for i in range(5):
-    A = [randint(0,x) for x in range(1000000)]   
-    x = time.time()
-    A.sort()
-    print(time.time() - x)
+
 
 

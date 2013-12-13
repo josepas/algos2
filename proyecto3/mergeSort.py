@@ -38,10 +38,7 @@ def merge(A):
 
 # Casos de prueba
 for i in range(5):
-    A = [randint(0,x) for x in range(1000000)]
-
+    A = [randint(0,x) for x in range(100000)]
     x = time.time()
-    
     A = merge(A)
-   
     print(time.time() - x)
