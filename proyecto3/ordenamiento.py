@@ -21,6 +21,8 @@
 #                 cmpf(x, y) > 0 : significa que el elemento x va después del elemento y
 #                 cmpf(x, y) = 0 : significa que los elementos x, y son equivalentes
 
+from random import *
+
 # Ordenamiento por Inserción
 def insertion(seq, cmpf):
     n = len(seq)
@@ -33,26 +35,115 @@ def insertion(seq, cmpf):
         seq[pos] = value
 
 # Ordenamiento por Quicksort
-def quicksort(seq, cmpf):
-   # completar
-    return
+def Particionar(A, izq, der):
+    # Seleccion aleatoria del pivote
+    pivot = randint(izq, der)
+    valorP = A[pivot]
+    # Paso el pivot a la posicion final para que no estorbe
+    A[pivot], A[der] = A[der], A[pivot]
+    m = izq
+    for i in range(izq, der):
+        if (A[i] <= valorP):
+            A[i], A[m] = A[m], A[i]
+            m += 1
+    # Coloco el pivote en su posicion final
+    A[der], A[m] = A[m], A[der]
+    return m
+    
+def quicksort(seq, cmpf, izq=-1, der=-1):
+	A = seq
+	if(der==-1 and izq==-1):
+		quicksort(A, cmpf, 0, len(A)-1)
+	if (izq < der):
+        pivot = Particionar(A, izq, der)
+        quickSort(A, izq , pivot - 1)
+        quickSort(A, pivot + 1, der)
+    return A
 
 # Ordenamiento por Mergeort
 def mergesort(seq, cmpf):
-    # completar
-    return
+	A = seq
+    if(len(A) == 1):
+        return A
+    m = len(A) // 2
+    izq = merge(A[:m])
+    der = merge(A[m:])
+    i, j = 0, 0
+    final = []
+    while(i < len(izq) and j < len(der)):
+        if(cmpf(izq[i],der[j]) <= 0):
+            final.append(izq[i])
+            i += 1
+        else:
+            final.append(der[j])
+            j += 1
+    if(i < len(izq)):
+        final += izq[i:]
+    if(j < len(der)):
+        final += der[j:]
+    return final
 
 # Ordenamiento por Heapsort
+def Heapify(A, i, n, cmpf):
+    # Caso Base
+    # No tengo hijos
+    if (2 * i + 1 > n):
+        return
+    # Tengo un solo hijo 
+    if (2 * i + 2 > n):
+        k = 2 * i + 1
+    # Tengo mas de un hijo, busco el mayor
+    else:
+        if (A[2 * i + 1] > A[2 * i + 2]):
+            k = 2 * i + 1
+        else:
+            k = 2 * i + 2
+    
+    # Intercambio al padre por su hijo mayor que el
+    if(cmpf(A[k],A[i]) > 0):
+        A[k], A[i] = A[i], A[k]
+        Heapify(A,k,n,cmpf)
+        
+def ConstruirHeap(A,n):
+    for i in range(n // 2, -1, -1):  
+        Heapify(A,i,n)
+        
 def heapsort(seq, cmpf):
-    # completar
+	A = seq
+	n = len(A) - 1
+    ConstruirHeap(A,n)
+    for i in range(n, 0, -1):
+        A[0], A[i] =  A[i], A[0]
+        Heapify(A, 0, i - 1, cmpf)
     return
 
 # Ordenamiento por Bubblesort0
 def bubblesort0(seq, cmpf):
-    # completar
-    return
+	A = seq
+	n = len(A)
+    co = 0
+    cambio = True
+    while cambio:
+        cambio = False
+        for i in range(n-1):
+        	if(cmpf(A[i],A[i+1]) > 0):
+                A[i], A[i+1] = A[i+1], A[i]
+                cambio = True
+                co += 1
+    return A
 
 # Ordenamiento por Bubblesort1
 def bubblesort1(seq, cmpf):
-    # completar
-    return
+	A = seq
+	n = len(A)
+    co = 0
+    cambio = True
+    while cambio:
+        cambio = False
+        for i in range(n-1):
+            if (cmpf(A[i],A[i+1]) > 0): 
+                A[i], A[i+1] = A[i+1], A[i]
+                cambio = True
+                co += 1
+        n -= 1
+    return A
