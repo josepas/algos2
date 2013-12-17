@@ -43,7 +43,8 @@ def parseArgs(args):
 # Retorna: Un objeto lista con n valores enteros aleatorios entre 0 y 1000000
 
 def obtenerArregloEnteros(n):
-    return [random.randint(0, 1000000) for x in range(n)]
+    A = [random.randint(0, 1000000) for x in range(n)]
+    return A
 
 # Descripción: Comprueba si un arreglo esta ordenado.
 # Parametros: a: objeto lista
@@ -52,8 +53,8 @@ def obtenerArregloEnteros(n):
 def estaOrdenado(a):
     n = len(a)
     for i in range(n-1):
-        if a[i] > a[i+1]
-        return False
+        if (a[i] > a[i+1]):
+            return False
     return True
 
 # Descripción: Prueba los algoritmos de ordenamientos con una lista de elementos.
@@ -180,12 +181,58 @@ def realizarPruebas(numPruebas, numElems, tipo):
 #           uno de los algoritmos probados, junto con la desviación estándar.
 
 def procesarResultados(results):
+    
     print("")
-    print(results) # Solo como muestra, eliminar para la entrega
-    #completar
+    quick = [0.0, 0.0]
+    merge = [0.0, 0.0]
+    heap = [0.0, 0.0]
+    bubble0 = [0.0, 0.0]
+    bubble1 = [0.0, 0.0]
+    insert = [0.0, 0.0]
+    
+    # Promedio
+    for i in results:
+        quick[0] += i[0][1]
+        merge[0] += i[1][1]
+        heap[0] += i[2][1]
+        if len(i) > 3:
+            insert[0] += i[3][1]
+            bubble0[0] += i[4][1]
+            bubble1[0] += i[5][1]
 
+    quick[0] /= len(results)
+    merge[0] /= len(results)        
+    heap[0] /= len(results)
+    insert[0] /= len(results)
+    bubble0[0] /= len(results)
+    bubble1[0] /= len(results)
+    
+    # Desviacion estandar
+    for i in results:
+        quick[1] += (quick[0] - i[0][1]) ** 2
+        merge[1] += (merge[0] - i[1][1])
+        heap[1] += (heap[0] - i[2][1]) ** 2
+        if len(i) > 3:
+            insert[1] += (insert[0] -  i[3][1]) ** 2
+            bubble0[1] += (bubble0[0] -  i[4][1]) ** 2
+            bubble1[1] += (bubble1[0] - i[5][1]) ** 2
+
+    quick[1] = ( quick[1] / (len(results) - 1) ) ** (1/2)
+    merge[1] = ( merge[1] / (len(results) - 1) ) ** (1/2)
+    heap[1] = ( heap[1] / (len(results) - 1) ) ** (1/2)
+    insert[1] = ( insert[1] / (len(results) - 1) ) ** (1/2)
+    bubble0[1] = ( bubble0[1] / (len(results) - 1) ) ** (1/2)
+    bubble1[1] = ( bubble1[1] / (len(results) - 1) ) ** (1/2)
+    
+    print('QuickSort | Tiempo promedio:', quick[0], '  Desviacion Estandar:', quick[1])
+    print('MergeSort | Tiempo promedio:', merge[0], '  Desviacion Estandar:', merge[1])
+    print('HeapSort | Tiempo promedio:', heap[0], '  Desviacion Estandar:', heap[1])
+    print('InsertionSort | Tiempo promedio:', insert[0], '  Desviacion Estandar:', insert[1])
+    print('BubbleSort(0) | Tiempo promedio:', bubble0[0], '  Desviacion Estandar:', bubble0[1])
+    print('BubbleSort(1) | Tiempo promedio:', bubble1[0], '  Desviacion Estandar:', bubble1[1])
+    
 ################################
-## Inicio de la Aplicación
+## Inicio de la Aplicación    ##
 ################################
 
 if __name__ == "__main__":

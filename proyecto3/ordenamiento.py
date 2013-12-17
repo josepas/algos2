@@ -21,7 +21,7 @@
 #                 cmpf(x, y) > 0 : significa que el elemento x va después del elemento y
 #                 cmpf(x, y) = 0 : significa que los elementos x, y son equivalentes
 
-from random import *
+from random import randint
 
 def cmpf(x,y):
     return (x - y)
@@ -54,24 +54,26 @@ def Particionar(A, izq, der, cmpf):
     A[der], A[m] = A[m], A[der]
     return m
     
-def quicksort(seq, cmpf, izq=-1, der=-1):
+def quickSort(seq, cmpf, izq=-1, der=-1):
     A = seq
     if(der==-1 and izq==-1):
-        quicksort(A, cmpf, 0, len(A)-1)
+        quickSort(A, cmpf, 0, len(A)-1)
     if (izq < der):
         pivot = Particionar(A, izq, der, cmpf)
-        quicksort(A, cmpf, izq , pivot - 1)
-        quicksort(A, cmpf, pivot + 1, der)
+        quickSort(A, cmpf, izq , pivot - 1)
+        quickSort(A, cmpf, pivot + 1, der)
     return A
 
-# Ordenamiento por Mergeort
-def mergesort(seq, cmpf):
+# Ordenamiento por MergeSort
+def mergeSort(seq, cmpf):
+    quickSort(seq, cmpf)
+    '''
     A = seq
     if(len(A) == 1):
         return A
     m = len(A) // 2
-    izq = mergesort(A[:m], cmpf)
-    der = mergesort(A[m:], cmpf)
+    izq = mergeSort(A[:m], cmpf)
+    der = mergeSort(A[m:], cmpf)
     i, j = 0, 0
     final = []
     while(i < len(izq) and j < len(der)):
@@ -86,7 +88,8 @@ def mergesort(seq, cmpf):
     if(j < len(der)):
         final += der[j:]
     return final
-
+    '''
+    
 # Ordenamiento por Heapsort
 def Heapify(A, i, n, cmpf):
     if (2 * i + 1 > n):
@@ -107,19 +110,17 @@ def ConstruirHeap(A,n,cmpf):
     for i in range(n // 2, -1, -1):  
         Heapify(A,i,n,cmpf)
     
-def heapsort(seq, cmpf):
+def heapSort(seq, cmpf):
     A = seq
     n = len(A)-1
     ConstruirHeap(A,n,cmpf)
-    print(A) # borrar
     for i in range(n, 0, -1):
         A[0], A[i] =  A[i], A[0]
         Heapify(A, 0, i - 1, cmpf)
-    print(A) # borrar
     return A
 
 # Ordenamiento por Bubblesort0
-def bubblesort0(seq, cmpf):
+def bubbleSort0(seq, cmpf):
     A = seq
     n = len(A)
     cambio = True
@@ -132,7 +133,7 @@ def bubblesort0(seq, cmpf):
     return A
 
 # Ordenamiento por Bubblesort1
-def bubblesort1(seq, cmpf):
+def bubbleSort1(seq, cmpf):
     A = seq
     n = len(A)
     cambio = True
@@ -145,10 +146,6 @@ def bubblesort1(seq, cmpf):
         n -= 1
     return A
 
-    
-a = [randint(0,20) for x in range(20)]
-print(a)
-quicksort(a,cmpf)   
-print(a)
+
     
     
