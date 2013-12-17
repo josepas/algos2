@@ -35,7 +35,7 @@ def insertion(seq, cmpf):
         seq[pos] = value
 
 # Ordenamiento por Quicksort
-def Particionar(A, izq, der):
+def Particionar(A, izq, der, cmpf):
     # Seleccion aleatoria del pivote
     pivot = randint(izq, der)
     valorP = A[pivot]
@@ -43,7 +43,7 @@ def Particionar(A, izq, der):
     A[pivot], A[der] = A[der], A[pivot]
     m = izq
     for i in range(izq, der):
-        if (A[i] <= valorP):
+        if(cmpf(A[i], valorP) <= 0):
             A[i], A[m] = A[m], A[i]
             m += 1
     # Coloco el pivote en su posicion final
@@ -51,23 +51,23 @@ def Particionar(A, izq, der):
     return m
     
 def quicksort(seq, cmpf, izq=-1, der=-1):
-	A = seq
-	if(der==-1 and izq==-1):
-		quicksort(A, cmpf, 0, len(A)-1)
-	if (izq < der):
-        pivot = Particionar(A, izq, der)
-        quickSort(A, izq , pivot - 1)
-        quickSort(A, pivot + 1, der)
+    A = seq
+    if(der==-1 and izq==-1):
+        quicksort(A, cmpf, 0, len(A)-1)
+    if (izq < der):
+        pivot = Particionar(A, izq, der, cmpf)
+        quicksort(A, izq , pivot - 1)
+        quicksort(A, pivot + 1, der)
     return A
 
 # Ordenamiento por Mergeort
 def mergesort(seq, cmpf):
-	A = seq
+    A = seq
     if(len(A) == 1):
         return A
     m = len(A) // 2
-    izq = merge(A[:m])
-    der = merge(A[m:])
+    izq = mergesort(A[:m], cmpf)
+    der = mergesort(A[m:], cmpf)
     i, j = 0, 0
     final = []
     while(i < len(izq) and j < len(der)):
@@ -94,7 +94,8 @@ def Heapify(A, i, n, cmpf):
         k = 2 * i + 1
     # Tengo mas de un hijo, busco el mayor
     else:
-        if (A[2 * i + 1] > A[2 * i + 2]):
+        if(cmpf(A[2*1 + 1], A[2*i + 2]) > 0):
+        #if (A[2 * i + 1] > A[2 * i + 2]):
             k = 2 * i + 1
         else:
             k = 2 * i + 2
@@ -104,38 +105,38 @@ def Heapify(A, i, n, cmpf):
         A[k], A[i] = A[i], A[k]
         Heapify(A,k,n,cmpf)
         
-def ConstruirHeap(A,n):
+def ConstruirHeap(A,n,cmpf):
     for i in range(n // 2, -1, -1):  
-        Heapify(A,i,n)
+        Heapify(A,i,n,cmpf)
         
 def heapsort(seq, cmpf):
-	A = seq
-	n = len(A) - 1
-    ConstruirHeap(A,n)
+    A = seq
+    n = len(A)-1
+    ConstruirHeap(A,n,cmpf)
     for i in range(n, 0, -1):
         A[0], A[i] =  A[i], A[0]
         Heapify(A, 0, i - 1, cmpf)
-    return
+    return A
 
 # Ordenamiento por Bubblesort0
 def bubblesort0(seq, cmpf):
-	A = seq
-	n = len(A)
+    A = seq
+    n = len(A)
     co = 0
     cambio = True
     while cambio:
         cambio = False
         for i in range(n-1):
         	if(cmpf(A[i],A[i+1]) > 0):
-                A[i], A[i+1] = A[i+1], A[i]
-                cambio = True
-                co += 1
+        	    A[i], A[i+1] = A[i+1], A[i]
+        	    cambio = True
+        	    co += 1
     return A
 
 # Ordenamiento por Bubblesort1
 def bubblesort1(seq, cmpf):
-	A = seq
-	n = len(A)
+    A = seq
+    n = len(A)
     co = 0
     cambio = True
     while cambio:
