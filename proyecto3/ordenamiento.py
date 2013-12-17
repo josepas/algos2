@@ -23,6 +23,10 @@
 
 from random import *
 
+def cmpf(x,y):
+    return (x - y)
+
+
 # Ordenamiento por Inserción
 def insertion(seq, cmpf):
     n = len(seq)
@@ -56,8 +60,8 @@ def quicksort(seq, cmpf, izq=-1, der=-1):
         quicksort(A, cmpf, 0, len(A)-1)
     if (izq < der):
         pivot = Particionar(A, izq, der, cmpf)
-        quicksort(A, izq , pivot - 1)
-        quicksort(A, pivot + 1, der)
+        quicksort(A, cmpf, izq , pivot - 1)
+        quicksort(A, cmpf, pivot + 1, der)
     return A
 
 # Ordenamiento por Mergeort
@@ -85,22 +89,16 @@ def mergesort(seq, cmpf):
 
 # Ordenamiento por Heapsort
 def Heapify(A, i, n, cmpf):
-    # Caso Base
-    # No tengo hijos
     if (2 * i + 1 > n):
         return
-    # Tengo un solo hijo 
     if (2 * i + 2 > n):
         k = 2 * i + 1
-    # Tengo mas de un hijo, busco el mayor
     else:
-        if(cmpf(A[2*1 + 1], A[2*i + 2]) > 0):
-        #if (A[2 * i + 1] > A[2 * i + 2]):
+        if(cmpf(A[2*i + 1], A[2*i + 2]) > 0):
             k = 2 * i + 1
         else:
             k = 2 * i + 2
     
-    # Intercambio al padre por su hijo mayor que el
     if(cmpf(A[k],A[i]) > 0):
         A[k], A[i] = A[i], A[k]
         Heapify(A,k,n,cmpf)
@@ -108,36 +106,35 @@ def Heapify(A, i, n, cmpf):
 def ConstruirHeap(A,n,cmpf):
     for i in range(n // 2, -1, -1):  
         Heapify(A,i,n,cmpf)
-        
+    
 def heapsort(seq, cmpf):
     A = seq
     n = len(A)-1
     ConstruirHeap(A,n,cmpf)
+    print(A) # borrar
     for i in range(n, 0, -1):
         A[0], A[i] =  A[i], A[0]
         Heapify(A, 0, i - 1, cmpf)
+    print(A) # borrar
     return A
 
 # Ordenamiento por Bubblesort0
 def bubblesort0(seq, cmpf):
     A = seq
     n = len(A)
-    co = 0
     cambio = True
     while cambio:
         cambio = False
         for i in range(n-1):
-        	if(cmpf(A[i],A[i+1]) > 0):
-        	    A[i], A[i+1] = A[i+1], A[i]
-        	    cambio = True
-        	    co += 1
+            if(cmpf(A[i],A[i+1]) > 0):
+                A[i], A[i+1] = A[i+1], A[i]
+                cambio = True
     return A
 
 # Ordenamiento por Bubblesort1
 def bubblesort1(seq, cmpf):
     A = seq
     n = len(A)
-    co = 0
     cambio = True
     while cambio:
         cambio = False
@@ -145,6 +142,13 @@ def bubblesort1(seq, cmpf):
             if (cmpf(A[i],A[i+1]) > 0): 
                 A[i], A[i+1] = A[i+1], A[i]
                 cambio = True
-                co += 1
         n -= 1
     return A
+
+    
+a = [randint(0,20) for x in range(20)]
+print(a)
+quicksort(a,cmpf)   
+print(a)
+    
+    
