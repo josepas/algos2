@@ -65,31 +65,34 @@ def quickSort(seq, cmpf, izq=-1, der=-1):
     return A
 
 # Ordenamiento por MergeSort
-def mergeSort(seq, cmpf):
-    quickSort(seq, cmpf)
-    '''
-    A = seq
-    if(len(A) == 1):
-        return A
-    m = len(A) // 2
-    izq = mergeSort(A[:m], cmpf)
-    der = mergeSort(A[m:], cmpf)
-    i, j = 0, 0
-    final = []
-    while(i < len(izq) and j < len(der)):
-        if(cmpf(izq[i],der[j]) <= 0):
-            final.append(izq[i])
-            i += 1
-        else:
-            final.append(der[j])
-            j += 1
-    if(i < len(izq)):
-        final += izq[i:]
-    if(j < len(der)):
-        final += der[j:]
-    return final
-    '''
-    
+def mergeSort(seq, cmpf, default=-1):
+    if(default == -1):
+        A = mergeSort(seq,cmpf,1)
+        for i in range(len(A)):
+            seq[i] = A[i]
+    else:
+        A = seq
+        if(len(A) == 1):
+            return A
+        m = len(A) // 2
+        izq = mergeSort(A[:m], cmpf, 1)
+        der = mergeSort(A[m:], cmpf, 1)
+        i, j = 0, 0
+        final = []
+        while(i < len(izq) and j < len(der)):
+            if(cmpf(izq[i], der[j]) <= 0):
+                final.append(izq[i])
+                i += 1
+            else:
+                final.append(der[j])
+                j += 1
+        if(i < len(izq)):
+            final += izq[i:]
+        if(j < len(der)):
+            final += der[j:]
+        A = final
+        return A  
+
 # Ordenamiento por Heapsort
 def Heapify(A, i, n, cmpf):
     if (2 * i + 1 > n):

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# coding=utf-8
 
 # Descripción: Cliente que prueba algoritmos de ordenamiento
 #     	       con listas de enteros con valores aleatorios
