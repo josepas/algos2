@@ -22,9 +22,7 @@
 #                 cmpf(x, y) = 0 : significa que los elementos x, y son equivalentes
 
 from random import randint
-
-def cmpf(x,y):
-    return (x - y)
+from sys import maxsize
 
 
 # Ordenamiento por Inserción
@@ -64,33 +62,34 @@ def quickSort(seq, cmpf, izq=-1, der=-1):
     return A
 
 # Ordenamiento por MergeSort
-def mergeSort(seq, cmpf, default=-1):
-    if(default == -1):
-        A = mergeSort(seq,cmpf,1)
-        for i in range(len(A)):
-            seq[i] = A[i]
-    else:
-        A = seq
-        if(len(A) == 1):
-            return A
-        m = len(A) // 2
-        izq = mergeSort(A[:m], cmpf, 1)
-        der = mergeSort(A[m:], cmpf, 1)
-        i, j = 0, 0
-        final = []
-        while(i < len(izq) and j < len(der)):
-            if(cmpf(izq[i], der[j]) <= 0):
-                final.append(izq[i])
-                i += 1
-            else:
-                final.append(der[j])
-                j += 1
-        if(i < len(izq)):
-            final += izq[i:]
-        if(j < len(der)):
-            final += der[j:]
-        A = final
-        return A  
+def mezclar(A, cmpf, izq, med, der):
+    final = []
+    I = A[izq:med]
+    J = A[med:der]
+    i, j = 0, 0
+    while(i < len(I) and j < len(J)):
+        if(cmpf(I[i],J[j]) <= 0):
+            final.append(I[i])
+            i += 1
+        else:
+            final.append(J[j])
+            j += 1
+    for k in range(i, len(I)):
+        final.append(I[k])
+    for k in range(j, len(J)):
+        final.append(J[k])
+    for k in range(der-izq):
+        A[izq+k] = final[k]
+
+
+def mergeSort(seq, cmpf, p=0, r=-1):
+    if(r == -1):
+        r = len(seq)
+    if(r - p >= 2):
+        med = (p + r) // 2
+        mergeSort(seq, cmpf, p, med)
+        mergeSort(seq, cmpf, med, r)
+        mezclar(seq, cmpf, p, med, r)
 
 # Ordenamiento por Heapsort
 def Heapify(A, i, n, cmpf):
