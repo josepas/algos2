@@ -41,10 +41,9 @@ def insertion(seq, cmpf):
 # Ordenamiento por Quicksort
 def Particionar(A, izq, der, cmpf):
     # Seleccion aleatoria del pivote
-    pivot = randint(izq, der)
+    pivot = der
     valorP = A[pivot]
     # Paso el pivot a la posicion final para que no estorbe
-    A[pivot], A[der] = A[der], A[pivot]
     m = izq
     for i in range(izq, der):
         if(cmpf(A[i], valorP) <= 0):

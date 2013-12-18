@@ -14,10 +14,9 @@ import time
 
 def Particionar(A, izq, der):
     # Seleccion aleatoria del pivote
-    pivot = randint(izq, der)
+    pivot = der
     valorP = A[pivot]
     # Paso el pivot a la posicion final para que no estorbe
-    A[pivot], A[der] = A[der], A[pivot]
     m = izq
     for i in range(izq, der):
         if (A[i] <= valorP):
@@ -33,6 +32,11 @@ def QuickSort(A, izq, der):
         QuickSort(A, izq , pivot - 1)
         QuickSort(A, pivot + 1, der)
 
+A = [randint(0,10) for i in range(100)]
+start_time = time.time()
+QuickSort(A, 0, len(A)-1)
+print(A)
+print(time.time() - start_time)
 
 
 
