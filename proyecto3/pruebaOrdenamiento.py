@@ -225,12 +225,12 @@ def procesarResultados(results):
     bubble0[1] = ( bubble0[1] / (len(results) - 1) ) ** (1/2)
     bubble1[1] = ( bubble1[1] / (len(results) - 1) ) ** (1/2)
     
-    print('QuickSort\t | Tiempo promedio:', quick[0], '  \tDesviacion Estandar:', quick[1])
-    print('MergeSort\t | Tiempo promedio:', merge[0], '  \tDesviacion Estandar:', merge[1])
-    print('HeapSort\t | Tiempo promedio:', heap[0], '  \tDesviacion Estandar:', heap[1])
-    print('InsertionSort\t | Tiempo promedio:', insert[0], ' \tDesviacion Estandar:', insert[1])
-    print('BubbleSort(0)\t | Tiempo promedio:', bubble0[0], ' \tDesviacion Estandar:', bubble0[1])
-    print('BubbleSort(1)\t | Tiempo promedio:', bubble1[0], '  \tDesviacion Estandar:', bubble1[1])
+    print('QuickSort\t | Tiempo promedio:', round(quick[0],2), '  \tDesviacion Estandar:', round(quick[1],2))
+    print('MergeSort\t | Tiempo promedio:', round(merge[0],2), '  \tDesviacion Estandar:', round(merge[1],2))
+    print('HeapSort\t | Tiempo promedio:', round(heap[0],2), '  \tDesviacion Estandar:', round(heap[1],2))
+    print('InsertionSort\t | Tiempo promedio:', round(insert[0],2), ' \tDesviacion Estandar:', round(insert[1],2))
+    print('BubbleSort(0)\t | Tiempo promedio:', round(bubble0[0],2), ' \tDesviacion Estandar:', round(bubble0[1],2))
+    print('BubbleSort(1)\t | Tiempo promedio:', round(bubble1[0],2), '  \tDesviacion Estandar:', round(bubble1[1],2))
     
 ################################
 ## Inicio de la Aplicación    ##
