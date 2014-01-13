@@ -2,7 +2,7 @@ from nodo import baseN
 
 class arbolBin:
     def __init__(self):
-        self.raiz = baseN(None, '')
+        self.raiz = baseN()
         
     def procesar(self, archivo):
         entrada = open('casoPrueba.txt', 'r')
@@ -12,7 +12,7 @@ class arbolBin:
             
     def GET(self, nodo, clave):
         if (nodo == None):
-            print(nodo.cadena + clave, 0)
+            print(0)
             return
         if (clave == ''):
             print(nodo.cadena, nodo.cant)
@@ -36,37 +36,34 @@ class arbolBin:
         clave = clave[1:]
         if act == 'A':
             if nodo.izq == None:
-                nodo.izq = baseN(nodo, nodo.cadena + act)
+                nodo.izq = baseN()
             self.ADD(nodo.izq, clave)
         
         if act == 'T':
             if nodo.der == None:
-                nodo.der = baseN(nodo, nodo.cadena + act)
+                nodo.der = baseN()
             self.ADD(nodo.der, clave)
         
 
-    def GETALL(self, nodo):     
+    def GETALL(self, nodo, camino):     
         if nodo == None:
             return
         #if nodo.cant > 0:
-        print(nodo.cadena, nodo.cant)
-        self.GETALL(nodo.izq)
-        self.GETALL(nodo.der)
+        print(camino, nodo.cant)
+        self.GETALL(nodo.izq, camino + 'A')
+        self.GETALL(nodo.der, camino + 'T')
         
-    # Aqui esta casi lista
     def MAXLENGTH(self, nodo, maximo=-1):
         if nodo == None:
             return maximo
-        if nodo.cant > maximo:
-            
+        if (nodo.cant > maximo):
             maximo = nodo.cant
         maximo = self.MAXLENGTH(nodo.izq, maximo)
         maximo = self.MAXLENGTH(nodo.der, maximo)
         return maximo
     
     
-    def PODAR(self, nodo):
-        print(nodo.cadena, nodo.cant, nodo.izq, nodo.der)
+    def PODAR(self, nodo, hijo):
         if nodo.cant > 0 or nodo.izq != None or nodo.der != None:
             return
         print('borre un nodo')
@@ -80,7 +77,7 @@ class arbolBin:
             return
         if (clave == ''):
             nodo.cant = 0
-            self.PODAR(nodo)
+            self.PODAR(nodo.padre, nodo.cadena[-1])
             return
             
         act = clave[0]
@@ -152,9 +149,9 @@ h.ADD(h.raiz, 'TTATTATATATTTTA')
 h.ADD(h.raiz, 'TTATTATATATTTTA')
 h.ADD(h.raiz, 'TTATTATATATTTTA')
 h.ADD(h.raiz, 'TTATTATATATTTTA')
-h.GETALL(h.raiz)
-h.DELETE(h.raiz, 'TTATTATATATTTTA')
-h.GETALL(h.raiz)
+h.GETALL(h.raiz, '')
+#h.DELETE(h.raiz, 'TTATTATATATTTTA')
+#h.GETALL(h.raiz)
 
 
 print(h.MAXLENGTH(h.raiz))
