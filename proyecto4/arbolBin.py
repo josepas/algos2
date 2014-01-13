@@ -63,34 +63,38 @@ class arbolBin:
         return maximo
     
     
-    def PODAR(self, nodo, hijo):
-        if nodo.cant > 0 or nodo.izq != None or nodo.der != None:
-            return
-        print('borre un nodo')
-        aux = nodo.padre
-        del(nodo)
-        nodo = None
-        self.PODAR(aux)
+    #def PODAR(self, nodo):
+        #if nodo.cant > 0 or nodo.izq != None or nodo.der != None:
+            #return
+        #print('borre un nodo')
+        #aux = nodo.padre
+        #del(nodo)
+        #nodo = None
+        #self.PODAR(aux)
     
+    
+    #Aqui la estoy cagando con podar
     def DELETE(self, nodo, clave):
         if (nodo == None):
             return
         if (clave == ''):
             nodo.cant = 0
-            self.PODAR(nodo.padre, nodo.cadena[-1])
-            return
-            
-        act = clave[0]
+        if clave != '':
+            act = clave[0]
         clave = clave[1:]
+
         if act == 'A':
             self.DELETE(nodo.izq, clave)
-        
+            if nodo.der != None or nodo.cant > 0:
+                print(clave)
+                nodo.izq = None
+                return
         if act == 'T':
             self.DELETE(nodo.der, clave)
-    
-    
-    
-    
+            if nodo.izq != None or nodo.cant > 0:  
+                nodo.der = None
+                print(clave)
+                return
     
     def SET(self, nodo, clave, cantidad):
         if cantidad == 0:
@@ -150,8 +154,8 @@ h.ADD(h.raiz, 'TTATTATATATTTTA')
 h.ADD(h.raiz, 'TTATTATATATTTTA')
 h.ADD(h.raiz, 'TTATTATATATTTTA')
 h.GETALL(h.raiz, '')
-#h.DELETE(h.raiz, 'TTATTATATATTTTA')
-#h.GETALL(h.raiz)
+h.DELETE(h.raiz, 'TTATTATATATTTTA')
+h.GETALL(h.raiz, '')
 
 
 print(h.MAXLENGTH(h.raiz))
