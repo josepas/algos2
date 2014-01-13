@@ -64,12 +64,16 @@ class arbolBin:
         maximo = self.MAXLENGTH(nodo.der, maximo)
         return maximo
     
-    def PODAR(self, nodo  ):
+    
+    def PODAR(self, nodo):
+        print(nodo.cadena, nodo.cant, nodo.izq, nodo.der)
         if nodo.cant > 0 or nodo.izq != None or nodo.der != None:
             return
-        nodo
-    
-    
+        print('borre un nodo')
+        aux = nodo.padre
+        del(nodo)
+        nodo = None
+        self.PODAR(aux)
     
     def DELETE(self, nodo, clave):
         if (nodo == None):
@@ -77,16 +81,15 @@ class arbolBin:
         if (clave == ''):
             nodo.cant = 0
             self.PODAR(nodo)
-            
             return
             
         act = clave[0]
         clave = clave[1:]
         if act == 'A':
-            self.SET(nodo.izq, clave, cantidad)
+            self.DELETE(nodo.izq, clave)
         
         if act == 'T':
-            self.SET(nodo.der, clave, cantidad)
+            self.DELETE(nodo.der, clave)
     
     
     
@@ -149,9 +152,11 @@ h.ADD(h.raiz, 'TTATTATATATTTTA')
 h.ADD(h.raiz, 'TTATTATATATTTTA')
 h.ADD(h.raiz, 'TTATTATATATTTTA')
 h.ADD(h.raiz, 'TTATTATATATTTTA')
-
-
 h.GETALL(h.raiz)
+h.DELETE(h.raiz, 'TTATTATATATTTTA')
+h.GETALL(h.raiz)
+
+
 print(h.MAXLENGTH(h.raiz))
 
 
