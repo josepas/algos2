@@ -75,26 +75,26 @@ class arbolBin:
     
     #Aqui la estoy cagando con podar
     def DELETE(self, nodo, clave):
-        if (nodo == None):
-            return
         if (clave == ''):
             nodo.cant = 0
+            act = ''
         if clave != '':
             act = clave[0]
         clave = clave[1:]
 
         if act == 'A':
-            self.DELETE(nodo.izq, clave)
-            if nodo.der != None or nodo.cant > 0:
-                print(clave)
+            if self.DELETE(nodo.izq, clave):
                 nodo.izq = None
-                return
         if act == 'T':
-            self.DELETE(nodo.der, clave)
-            if nodo.izq != None or nodo.cant > 0:  
+            if self.DELETE(nodo.der, clave):
                 nodo.der = None
-                print(clave)
-                return
+        
+        print('flag', nodo.izq, '||', nodo.der, '||', nodo.cant)
+        if nodo.izq == None and nodo.der == None and nodo.cant == 0:
+            return True
+        else:
+            return False
+       
     
     def SET(self, nodo, clave, cantidad):
         if cantidad == 0:
@@ -149,12 +149,12 @@ h.ADD(h.raiz, 'TTAT')
 h.ADD(h.raiz, 'TTAT')
 h.ADD(h.raiz, 'TTAT')
 h.ADD(h.raiz, 'TTAT')
-h.ADD(h.raiz, 'TTATTATATATTTTA')
-h.ADD(h.raiz, 'TTATTATATATTTTA')
-h.ADD(h.raiz, 'TTATTATATATTTTA')
-h.ADD(h.raiz, 'TTATTATATATTTTA')
+h.ADD(h.raiz, 'TTTTTTTTT    ')
+h.ADD(h.raiz, 'TTTTTTTTT')
+h.ADD(h.raiz, 'TTTTTTTTT')
+h.ADD(h.raiz, 'TTTTTTTTT')
 h.GETALL(h.raiz, '')
-h.DELETE(h.raiz, 'TTATTATATATTTTA')
+h.DELETE(h.raiz, 'TTTTTTTTT')
 h.GETALL(h.raiz, '')
 
 
