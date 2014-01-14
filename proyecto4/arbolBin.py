@@ -126,6 +126,50 @@ class arbolBin:
                 nodo.der = baseN()
             self.CHANGE(nodo.der, secO, secD[1:])
 
+    def UnionA(self, nodo1, nodo2):
+        raiz = baseN()
+        cant = 0
+        if(nodo1 != None):
+            cant += nodo1.cant
+        if(nodo2 != None):
+            cant += nodo2.cant
+        raiz.cant = cant
+        if(nodo1 == None and nodo2 == None):
+            return None
+        elif(nodo1 != None and nodo2 == None):
+            raiz.izq = nodo1.izq
+            raiz.der = nodo1.der
+        elif(nodo1 == None and nodo2 != None):
+            raiz.izq = nodo2.izq
+            raiz.der = nodo2.der
+        else:
+            raiz.izq = self.UnionA(nodo1.izq, nodo2.izq)
+            raiz.der = self.UnionA(nodo1.der, nodo2.der)
+        return raiz
+
+    def CHANGEMERGE(self, nodo, secO, secD):
+        aux1 = nodo
+        aux2 = nodo
+        for i in secO:
+            if(i == 'A'):
+                aux1 = aux1.izq
+            if(i == 'T'):
+                aux1 = aux1.der
+        for i in secD:
+            if(i == 'A'):
+                aux2 = aux2.izq
+            if(i == 'T'):
+                aux2 = aux2.der
+        tmp = self.UnionA(aux1, aux2)
+        aux2.cant = tmp.cant
+        aux2.izq = tmp.izq
+        aux2.der = tmp.der
+        aux1.izq = None
+        aux1.der = None
+        self.DELETE(self.raiz, secO)
+    def PRINT(self, string):
+        with open("salida.txt", 'a') as s:
+            s.write(string)
 
 
 h = arbolBin()
@@ -140,8 +184,8 @@ h.GETALL(h.raiz, '')
 
 print(h.MAXLENGTH(h.raiz))
 
-print("Cambiando: AT -> TA")
-h.CHANGE(h.raiz, "AT", "TA")
+print("Fusion: AT -> T")
+h.CHANGEMERGE(h.raiz, "AT", "T")
 
 h.GETALL(h.raiz, '')
 
