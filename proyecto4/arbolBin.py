@@ -62,18 +62,6 @@ class arbolBin:
         maximo = self.MAXLENGTH(nodo.der, maximo)
         return maximo
     
-    
-    #def PODAR(self, nodo):
-        #if nodo.cant > 0 or nodo.izq != None or nodo.der != None:
-            #return
-        #print('borre un nodo')
-        #aux = nodo.padre
-        #del(nodo)
-        #nodo = None
-        #self.PODAR(aux)
-    
-    
-    #Aqui la estoy cagando con podar
     def DELETE(self, nodo, clave):
         if (clave == ''):
             nodo.cant = 0
@@ -89,7 +77,6 @@ class arbolBin:
             if self.DELETE(nodo.der, clave):
                 nodo.der = None
         
-        print('flag', nodo.izq, '||', nodo.der, '||', nodo.cant)
         if nodo.izq == None and nodo.der == None and nodo.cant == 0:
             return True
         else:
@@ -113,58 +100,48 @@ class arbolBin:
         if act == 'T':
             self.SET(nodo.der, clave, cantidad)  
         
-        
-         
-h = arbolBin()
-h.ADD(h.raiz, 'A')
-h.ADD(h.raiz, 'T')
-h.ADD(h.raiz, 'T')
-h.ADD(h.raiz, 'T')
-h.ADD(h.raiz, 'AA')
-h.ADD(h.raiz, 'AA')
-h.ADD(h.raiz, 'AT')
-h.ADD(h.raiz, 'AT')
-h.ADD(h.raiz, 'AT')
-h.ADD(h.raiz, 'AT')
-h.ADD(h.raiz, 'AT')
-h.ADD(h.raiz, 'TA')
-h.ADD(h.raiz, 'TA')
-h.ADD(h.raiz, 'TA')
-h.ADD(h.raiz, 'TA')
-h.ADD(h.raiz, 'TT')
-h.ADD(h.raiz, 'TT')
-h.ADD(h.raiz, 'ATA')
-h.ADD(h.raiz, 'ATA')
-h.ADD(h.raiz, 'ATA')
-h.ADD(h.raiz, 'ATA')
-h.ADD(h.raiz, 'ATA')
-h.ADD(h.raiz, 'ATA')
-h.ADD(h.raiz, 'TTA')
-h.ADD(h.raiz, 'TTAT')
-h.ADD(h.raiz, 'TTAT')
-h.ADD(h.raiz, 'TTAT')
-h.ADD(h.raiz, 'TTAT')
-h.ADD(h.raiz, 'TTAT')
-h.ADD(h.raiz, 'TTAT')
-h.ADD(h.raiz, 'TTAT')
-h.ADD(h.raiz, 'TTAT')
-h.ADD(h.raiz, 'TTAT')
-h.ADD(h.raiz, 'TTTTTTTTT    ')
-h.ADD(h.raiz, 'TTTTTTTTT')
-h.ADD(h.raiz, 'TTTTTTTTT')
-h.ADD(h.raiz, 'TTTTTTTTT')
-h.GETALL(h.raiz, '')
-h.DELETE(h.raiz, 'TTTTTTTTT')
-h.GETALL(h.raiz, '')
+    def CHANGE(self, nodo, secO, secD):
+        if(secD == ''):
+            if(nodo.cant > 0 or nodo.izq != None or nodo.der != None):
+                print("ERROR")
+            else:
+                aux = self.raiz
+                for i in secO:
+                    if(i == 'A'):
+                        aux = aux.izq
+                    if(i == 'T'):
+                        aux = aux.der
+                nodo.izq = aux.izq
+                nodo.der = aux.der
+                nodo.cant = aux.cant
+                aux.izq = None
+                aux.der = None
+                self.DELETE(self.raiz, secO)
+        elif(secD[0] == 'A'):
+            if(nodo.izq == None):
+                nodo.izq = baseN()
+            self.CHANGE(nodo.izq, secO, secD[1:])
+        elif(secD[0] == 'T'):
+            if(nodo.der == None):
+                nodo.der = baseN()
+            self.CHANGE(nodo.der, secO, secD[1:])
 
+
+
+h = arbolBin()
+
+h.ADD(h.raiz, "ATA")
+h.ADD(h.raiz, "ATT")
+h.ADD(h.raiz, "ATT")
+h.ADD(h.raiz, "T")
+h.ADD(h.raiz, "TT")
+
+h.GETALL(h.raiz, '')
 
 print(h.MAXLENGTH(h.raiz))
 
+print("Cambiando: AT -> TA")
+h.CHANGE(h.raiz, "AT", "TA")
 
-
-
-
-
-
-
+h.GETALL(h.raiz, '')
 
