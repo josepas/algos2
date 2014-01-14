@@ -44,13 +44,14 @@ class arbolBin:
             return
         #if nodo.cant > 0:
         print(camino, nodo.cant)
-        self.PRINT(camino + str(nodo.cant))
+        self.PRINT(camino + ' ' + str(nodo.cant))
         self.GETALL(nodo.izq, camino + 'A')
         self.GETALL(nodo.der, camino + 'T')
         
     def MAXLENGTH(self, nodo, maximo=-1):
-        if nodo == None:
+        if (nodo == None):
             return maximo
+        print(nodo.cant)
         if (nodo.cant > maximo):
             maximo = nodo.cant
         maximo = self.MAXLENGTH(nodo.izq, maximo)
@@ -172,7 +173,7 @@ class arbolBin:
         entrada = open(archivo, 'r')
         for i in entrada:
             i = i.split()
-            print(i[0], 'hola!')
+            print(i[0])
             if i[0] == 'ADD':
                 self.ADD(self.raiz, i[1])
                 
@@ -198,7 +199,7 @@ class arbolBin:
                 self.PRINT(self.raiz, i[1])
                 
             if i[0] == 'MAXLENGTH':
-                self.PRINT('maxlength == ' + self.MAXLENGTH(self.raiz))
+                self.PRINT('maxlength == ' + str(self.MAXLENGTH(self.raiz)))
     
 
 print(sys.argv[1], sys.argv[2])
