@@ -8,12 +8,34 @@ class arbolBin:
         entrada = open('casoPrueba.txt', 'r')
         for i in entrada:
             print(i[0], i[1], 'hola!')
-            
+            if i[0] = 'ADD':
+                self.AAD(self.raiz, i[1])
+                
+            if i[0] = 'GET':
+                self.GET(self.raiz, i[1])
+                
+            if i[0] = 'GETALL':
+                self.GETALL(self.raiz, '')
+                
+            if i[0] = 'SET':
+                self.SET(self.raiz, i[1], i[2])
+                
+            if i[0] = 'CHANGE':    
+                self.CHANGE(self.raiz, i[1], i[2])
+                
+            if i[0] = 'CHANGEMERGE':
+                self.CHANGEMERGE(self.raiz, i[1], i[2])
+                
+            if i[0] = 'DELETE':
+                self.DELETE(self.raiz, i[1])
+                
+            if i[0] = 'PRINT':
+                self.PRINT(self.raiz, i[1])
+                
+            if i[0] = 'MAXLENGTH':
+                self.MAXLENGTH(self.raiz)
             
     def GET(self, nodo, clave):
-        if (nodo == None):
-            print(0)
-            return
         if (clave == ''):
             print(nodo.cadena, nodo.cant)
             return
@@ -126,6 +148,10 @@ class arbolBin:
                 nodo.der = baseN()
             self.CHANGE(nodo.der, secO, secD[1:])
 
+            
+            
+            
+            
 
 
 h = arbolBin()
