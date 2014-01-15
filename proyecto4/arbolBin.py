@@ -42,21 +42,25 @@ class arbolBin:
     def GETALL(self, nodo, camino):     
         if nodo == None:
             return
-        #if nodo.cant > 0:
-        print(camino, nodo.cant)
-        self.PRINT(camino + ' ' + str(nodo.cant))
+        if nodo.cant > 0:
+            self.PRINT(camino + ' ' + str(nodo.cant))
         self.GETALL(nodo.izq, camino + 'A')
         self.GETALL(nodo.der, camino + 'T')
         
-    def MAXLENGTH(self, nodo, maximo=-1):
+    def MAXLENGTH(self, nodo):
         if (nodo == None):
-            return maximo
-        print(nodo.cant)
-        if (nodo.cant > maximo):
-            maximo = nodo.cant
-        maximo = self.MAXLENGTH(nodo.izq, maximo)
-        maximo = self.MAXLENGTH(nodo.der, maximo)
-        return maximo
+            return 0
+
+        if nodo == self.raiz:
+            max1 = self.MAXLENGTH(nodo.izq)
+            max2 = self.MAXLENGTH(nodo.der)
+        else:
+            max1 = 1 + self.MAXLENGTH(nodo.izq)
+            max2 = 1 + self.MAXLENGTH(nodo.der)
+        if (max1 >= max2):
+            return max1
+        else:
+            return max2
     
     def DELETE(self, nodo, clave):
         if nodo == None:
@@ -173,7 +177,6 @@ class arbolBin:
         entrada = open(archivo, 'r')
         for i in entrada:
             i = i.split()
-            print(i[0])
             if i[0] == 'ADD':
                 self.ADD(self.raiz, i[1])
                 
@@ -184,7 +187,7 @@ class arbolBin:
                 self.GETALL(self.raiz, '')
                 
             if i[0] == 'SET':
-                self.SET(self.raiz, i[1], i[2])
+                self.SET(self.raiz, i[1], int(i[2]))
                 
             if i[0] == 'CHANGE':    
                 self.CHANGE(self.raiz, i[1], i[2])
@@ -201,8 +204,6 @@ class arbolBin:
             if i[0] == 'MAXLENGTH':
                 self.PRINT('maxlength == ' + str(self.MAXLENGTH(self.raiz)))
     
-
-print(sys.argv[1], sys.argv[2])
 h = arbolBin()
 h.salida = sys.argv[2]
 h.procesar(sys.argv[1])
