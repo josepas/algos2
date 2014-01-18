@@ -10,16 +10,17 @@ class arbolBin:
         with open(self.salida, 'a') as s:
             s.write(string + '\n')
   
-    def GET(self, nodo, clave):
+    def GET(self, clave):
         aux = self.raiz
         for i in clave:
-            if aux == None:
-                return(clave + ' ' + '0')
             if(i == 'A'):
                 aux = aux.izq
             if(i == 'T'):
                 aux = aux.der
-        return(clave + ' ' + aux.cant)
+        if aux == None:
+            return(clave + ' ' + '0')
+        else:
+            return(clave + ' ' + str(aux.cant))
         
     def ADD(self, nodo, clave):
         if (clave == ''):
@@ -90,19 +91,21 @@ class arbolBin:
     def SET(self, nodo, clave, cantidad):
         if cantidad == 0:
             self.DELETE(nodo, clave)
-        if (nodo == None):
-            return
         if (clave == ''):
             nodo.cant = cantidad
-            return
+            return False
             
         act = clave[0]
         clave = clave[1:]
         if act == 'A':
+            if(nodo.izq == None):
+                nodo.izq = baseN()
             self.SET(nodo.izq, clave, cantidad)
         
         if act == 'T':
-            self.SET(nodo.der, clave, cantidad)  
+            if(nodo.der == None):
+                nodo.der = baseN()
+            self.SET(nodo.der, clave, cantidad)
         
     def CHANGE(self, nodo, secO, secD):
         if(secD == ''):
@@ -181,7 +184,7 @@ class arbolBin:
                 self.ADD(self.raiz, i[1])
                 
             if i[0] == 'GET':
-                self.PRINT(self.GET(self.raiz, i[1]))
+                self.PRINT(self.GET(i[1]))
                 
             if i[0] == 'GETALL':
                 self.GETALL(self.raiz, '')
@@ -199,7 +202,7 @@ class arbolBin:
                 self.DELETE(self.raiz, i[1])
                 
             if i[0] == 'PRINT':
-                self.PRINT(self.raiz, i[1])
+                self.PRINT(i[1])
                 
             if i[0] == 'MAXLENGTH':
                 self.PRINT('maxlength == ' + str(self.MAXLENGTH(self.raiz)))
