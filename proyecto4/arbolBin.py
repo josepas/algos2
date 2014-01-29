@@ -17,6 +17,8 @@ class arbolBin:
                 aux = aux.izq
             if(i == 'T'):
                 aux = aux.der
+            if(aux == None):
+                break
         if aux == None:
             return(clave + ' ' + '0')
         else:
@@ -144,39 +146,12 @@ class arbolBin:
                    if(padre_D.der == None):
                        padre_D.der = baseN()
                    padre_D = padre_D.der
-           if(secO[-1] == 'A'):
+           if(secD[-1] == 'A'):
                padre_D.izq = nodo_O
-           elif(secO[-1] == 'T'):
+           elif(secD[-1] == 'T'):
                padre_D.der = nodo_O
        else:
            self.PRINT("ERROR: Cannot CHANGE. Use CHANGEMERGE instead.")
-
-
-#    def CHANGE(self, nodo, secO, secD):
-#        if(secD == ''):
-#            if(nodo.cant > 0 or nodo.izq != None or nodo.der != None):
-#                self.PRINT("ERROR: Cannot CHANGE. Use CHANGEMERGE instead.")
-#            else:
-#                aux = self.raiz
-#                for i in secO:
-#                    if(i == 'A'):
-#                        aux = aux.izq
-#                    if(i == 'T'):
-#                        aux = aux.der
-#                nodo.izq = aux.izq
-#                nodo.der = aux.der
-#                nodo.cant = aux.cant
-#                aux.izq = None
-#                aux.der = None
-#                self.DELETE(self.raiz, secO)
-#        elif(secD[0] == 'A'):
-#            if(nodo.izq == None):
-#                nodo.izq = baseN()
-#            self.CHANGE(nodo.izq, secO, secD[1:])
-#        elif(secD[0] == 'T'):
-#            if(nodo.der == None):
-#                nodo.der = baseN()
-#            self.CHANGE(nodo.der, secO, secD[1:])
 
 
     def UnionA(self, nodo1, nodo2):
@@ -219,37 +194,49 @@ class arbolBin:
         aux2.der = tmp.der
         aux1.izq = None
         aux1.der = None
-        self.DELETE(self.raiz, secO)
-    
+        
+        #Borrar nodo innecesario
+        aux = self.raiz
+        for i in secO[:-1]:
+            if(i == 'A'):
+                aux = aux.izq
+            if(i == 'T'):
+                aux = aux.der
+        if(secO[-1] == 'A'):
+            aux.izq = None
+        elif(secO[-1] == 'T'):
+            aux.der = None
+
     def procesar(self, archivo):
         entrada = open(archivo, 'r')
         for i in entrada:
-            i = i.split()
-            if i[0] == 'ADD':
-                self.ADD(self.raiz, i[1])
+            j = i.split()
+            if j[0] == 'ADD':
+                self.ADD(self.raiz, j[1])
                 
-            if i[0] == 'GET':
-                self.PRINT(self.GET(i[1]))
+            if j[0] == 'GET':
+                self.PRINT(self.GET(j[1]))
                 
-            if i[0] == 'GETALL':
+            if j[0] == 'GETALL':
                 self.GETALL(self.raiz, '')
                 
-            if i[0] == 'SET':
-                self.SET(self.raiz, i[1], int(i[2]))
+            if j[0] == 'SET':
+                self.SET(self.raiz, j[1], int(j[2]))
                 
-            if i[0] == 'CHANGE':    
-                self.CHANGE(i[1], i[2])
+            if j[0] == 'CHANGE':    
+                self.CHANGE(j[1], j[2])
                 
-            if i[0] == 'CHANGEMERGE':
-                self.CHANGEMERGE(self.raiz, i[1], i[2])
+            if j[0] == 'CHANGEMERGE':
+                self.CHANGEMERGE(self.raiz, j[1], j[2])
                 
-            if i[0] == 'DELETE':
-                self.DELETE(self.raiz, i[1])
+            if j[0] == 'DELETE':
+                self.DELETE(self.raiz, j[1])
                 
-            if i[0] == 'PRINT':
-                self.PRINT(i[1])
+            if j[0] == 'PRINT':
+                i = i[6:].strip("\'\n ")
+                self.PRINT(i)
                 
-            if i[0] == 'MAXLENGTH':
+            if j[0] == 'MAXLENGTH':
                 self.PRINT('maxlength == ' + str(self.MAXLENGTH(self.raiz)))
     
 h = arbolBin()
