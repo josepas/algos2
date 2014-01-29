@@ -106,32 +106,77 @@ class arbolBin:
             if(nodo.der == None):
                 nodo.der = baseN()
             self.SET(nodo.der, clave, cantidad)
-        
-    def CHANGE(self, nodo, secO, secD):
-        if(secD == ''):
-            if(nodo.cant > 0 or nodo.izq != None or nodo.der != None):
-                self.PRINT("ERROR: Cannot CHANGE. Use CHANGEMERGE instead.")
-            else:
-                aux = self.raiz
-                for i in secO:
-                    if(i == 'A'):
-                        aux = aux.izq
-                    if(i == 'T'):
-                        aux = aux.der
-                nodo.izq = aux.izq
-                nodo.der = aux.der
-                nodo.cant = aux.cant
-                aux.izq = None
-                aux.der = None
-                self.DELETE(self.raiz, secO)
-        elif(secD[0] == 'A'):
-            if(nodo.izq == None):
-                nodo.izq = baseN()
-            self.CHANGE(nodo.izq, secO, secD[1:])
-        elif(secD[0] == 'T'):
-            if(nodo.der == None):
-                nodo.der = baseN()
-            self.CHANGE(nodo.der, secO, secD[1:])
+    
+    def CHANGE(self, secO, secD):
+       #Chequeo de precondicion
+       aux = self.raiz
+       pre = False
+       for i in secD:
+           if(i == 'A'):
+               aux = aux.izq
+           elif(i == 'T'):
+               aux = aux.der
+           if(aux == None):
+               pre = True
+               break
+       if(pre):
+           nodo_O = self.raiz
+           padre_D = self.raiz
+           for i in secO[:-1]:
+               if(i == 'A'):
+                   nodo_O = nodo_O.izq
+               elif(i == 'T'):
+                   nodo_O = nodo_O.der
+           if(secO[-1] == 'A'):
+               aux = nodo_O
+               nodo_O = nodo_O.izq
+               aux.izq = None
+           elif(secO[-1] == 'T'):
+               aux = nodo_O
+               nodo_O = nodo_O.der
+               aux.der = None
+           for i in secD[:-1]:
+               if(i == 'A'):
+                   if(padre_D.izq == None):
+                       padre_D.izq = baseN()
+                   padre_D = padre_D.izq
+               elif(i == 'T'):
+                   if(padre_D.der == None):
+                       padre_D.der = baseN()
+                   padre_D = padre_D.der
+           if(secO[-1] == 'A'):
+               padre_D.izq = nodo_O
+           elif(secO[-1] == 'T'):
+               padre_D.der = nodo_O
+       else:
+           self.PRINT("ERROR: Cannot CHANGE. Use CHANGEMERGE instead.")
+
+
+#    def CHANGE(self, nodo, secO, secD):
+#        if(secD == ''):
+#            if(nodo.cant > 0 or nodo.izq != None or nodo.der != None):
+#                self.PRINT("ERROR: Cannot CHANGE. Use CHANGEMERGE instead.")
+#            else:
+#                aux = self.raiz
+#                for i in secO:
+#                    if(i == 'A'):
+#                        aux = aux.izq
+#                    if(i == 'T'):
+#                        aux = aux.der
+#                nodo.izq = aux.izq
+#                nodo.der = aux.der
+#                nodo.cant = aux.cant
+#                aux.izq = None
+#                aux.der = None
+#                self.DELETE(self.raiz, secO)
+#        elif(secD[0] == 'A'):
+#            if(nodo.izq == None):
+#                nodo.izq = baseN()
+#            self.CHANGE(nodo.izq, secO, secD[1:])
+#        elif(secD[0] == 'T'):
+#            if(nodo.der == None):
+#                nodo.der = baseN()
+#            self.CHANGE(nodo.der, secO, secD[1:])
 
 
     def UnionA(self, nodo1, nodo2):
@@ -193,7 +238,7 @@ class arbolBin:
                 self.SET(self.raiz, i[1], int(i[2]))
                 
             if i[0] == 'CHANGE':    
-                self.CHANGE(self.raiz, i[1], i[2])
+                self.CHANGE(i[1], i[2])
                 
             if i[0] == 'CHANGEMERGE':
                 self.CHANGEMERGE(self.raiz, i[1], i[2])
